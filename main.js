@@ -100,6 +100,105 @@ const MARKETING_SERVICES_DATA = [
   { name: "15-Minute Consultation Call", price: "Included", cat: "free" }
 ];
 
+// --- Blog Posts Dataset for SMM Insights ---
+const BLOG_POSTS_DATA = [
+  {
+    id: 1,
+    category: "SMM Strategy",
+    date: "June 2026",
+    title: "The 2.5-Second Hook Rule: How to Stop the Scroll",
+    excerpt: "Discover the exact neuro-linguistic triggers and visual frame sequences that capture retention and double organic views.",
+    content: `
+      <div class="blog-article-meta">SMM Strategy · June 2026</div>
+      <h3 class="blog-article-title">The 2.5-Second Hook Rule: How to Stop the Scroll</h3>
+      <div class="blog-article-content">
+        <p>In modern digital marketing, attention is the single most valuable currency. If you cannot capture a user's attention within the first 2.5 seconds of their scrolling experience, your content—regardless of how valuable or well-produced it is—will go entirely unnoticed. This is the <strong>2.5-Second Hook Rule</strong>.</p>
+        
+        <h4>1. The Neuro-Linguistic Trigger</h4>
+        <p>A successful hook does not just ask a question; it disrupts the user's current cognitive state. Use visual or textual cues that create immediate curiosity or indicate a high-value payoff. For example:</p>
+        <ul>
+          <li><strong>Disruptive Hook:</strong> "Stop wasting 90% of your organic traffic..."</li>
+          <li><strong>Curiosity Loop:</strong> "This single design token doubled our conversion rate, and it takes 10 seconds to add."</li>
+        </ul>
+
+        <h4>2. Frame Pacing and Micro-Movements</h4>
+        <p>Static scenes do not convert on feeds. Every 1.5 to 2.5 seconds, there must be a subtle visual transition: a text pop, zoom effect, change in camera angle, or graphic overlay. This signals the brain that new information is arriving, maintaining focus.</p>
+
+        <blockquote>
+          "The best hooks don't feel like sales pitches. They feel like insider secrets that the viewer stumbled upon."
+        </blockquote>
+
+        <h4>3. The Implementation Blueprint</h4>
+        <p>When structuring your next short-form video or image carousel, use this three-step pipeline:</p>
+        <ol>
+          <li><strong>0.0s - 2.5s:</strong> Bold, high-contrast headline + immediate pattern interrupt (movement/zoom).</li>
+          <li><strong>2.5s - 15.0s:</strong> Rapid delivery of the primary value point (no fluff, cut pauses).</li>
+          <li><strong>15.0s+:</strong> Micro-CTA directing profile clicks or comments for automated inbox links.</li>
+        </ol>
+      </div>
+    `
+  },
+  {
+    id: 2,
+    category: "Brand Design",
+    date: "June 2026",
+    title: "Organic Grid Aesthetics: Designing for Immediate Brand Trust",
+    excerpt: "Learn how to establish instant visual authority and drive organic engagement loops using harmonious brand layouts.",
+    content: `
+      <div class="blog-article-meta">Brand Design · June 2026</div>
+      <h3 class="blog-article-title">Organic Grid Aesthetics: Designing for Immediate Brand Trust</h3>
+      <div class="blog-article-content">
+        <p>Your social media grid is your digital storefront. When a cold user clicks through a hook to visit your profile, you have exactly one glance (less than a second) to establish authority. A chaotic grid signals an unorganized business, while a premium, cohesive aesthetic converts profile views into followers and clients.</p>
+
+        <h4>1. Curating the Harmonious HSL Palette</h4>
+        <p>Avoid random color choices. Select 3 core colors (e.g., deep dark backgrounds, bright neon accents, and clean secondary whites/grays) and stick to them strictly. HSL (Hue, Saturation, Lightness) modeling allows you to create matching shades easily, ensuring a unified visual hierarchy across posts.</p>
+
+        <h4>2. The Three-Column Layout Rhythm</h4>
+        <p>A premium grid follows a pattern. Instead of posting arbitrary graphics, structure your grid rows in columns of visual weight:</p>
+        <ul>
+          <li><strong>Column 1:</strong> High-contrast typography / educational text decks.</li>
+          <li><strong>Column 2:</strong> Premium mockups / high-end brand visuals / human faces.</li>
+          <li><strong>Column 3:</strong> Clean, minimalist graphics / short quotes / brand logos.</li>
+        </ul>
+
+        <blockquote>
+          "Cohesion beats single-post quality every time. A beautiful grid creates an experience, not just individual feed impressions."
+        </blockquote>
+
+        <h4>3. Creating a Living Interface</h4>
+        <p>Incorporate dynamic elements like glassmorphism tokens, custom gradients, and soft neon drop-shadows. On the web, subtle hover states and micro-animations make the layout feel reactive and alive, enhancing the perception of premium build quality.</p>
+      </div>
+    `
+  },
+  {
+    id: 3,
+    category: "Local SEO",
+    date: "June 2026",
+    title: "Local SEO Retainers: Dominating Google Maps in 2026",
+    excerpt: "A complete walkthrough for startups and local businesses aiming to convert local searches into real revenue pipelines.",
+    content: `
+      <div class="blog-article-meta">Local SEO · June 2026</div>
+      <h3 class="blog-article-title">Local SEO Retainers: Dominating Google Maps in 2026</h3>
+      <div class="blog-article-content">
+        <p>For local businesses and service desks, Google Maps is the single most powerful source of inbound leads. When someone searches for a service 'near me' or in a specific locality, the top three map listings (the '3-Pack') capture over 60% of all search clicks. Here is how we optimize Google Business Profiles for maximum visibility.</p>
+
+        <h4>1. NAP Consistency & Local Citations</h4>
+        <p>Your Name, Address, and Phone number (NAP) must be identical across every directory on the internet—from your website, to your GBP, to local directories (like Justdial, Sulekha, or Yelp). Google's algorithm rewards absolute consistency with higher local search trust.</p>
+
+        <h4>2. The Review Amplification Funnel</h4>
+        <p>Getting reviews is not just about quantity; it is about keyword richness and frequency. Encourage customers to write detailed reviews containing the specific service name and location (e.g., 'Best cyber cafe in Ichapur for college form fill-up'). This directly boosts category authority.</p>
+
+        <blockquote>
+          "Reviews are Google's local trust signal. A business that gets new, keyword-rich reviews weekly will easily outrank older, stagnant listings."
+        </blockquote>
+
+        <h4>3. Active Engagement Signals</h4>
+        <p>Treat your Google Business Profile like a social channel. Upload high-resolution photos of your workstation weekly, publish regular business updates/offers via Google Posts, and resolve Q&As proactively. These signals tell Google's crawl bots that your business is active and ready to serve searchers.</p>
+      </div>
+    `
+  }
+];
+
 function getLink(target) {
   const isLocalServer = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
   const isFileProtocol = window.location.protocol === 'file:';
@@ -426,6 +525,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderAlacarte();
+  }
+
+  // --- 7. Blog Posts Rendering & Modal Logic ---
+  const blogGrid = document.getElementById('blog-posts-grid');
+  const blogModal = document.getElementById('blog-reader-modal');
+  const blogModalContent = document.getElementById('blog-reader-content');
+  const blogModalCloseBtn = document.getElementById('blog-modal-close-btn');
+  const blogModalCloseBg = document.getElementById('blog-modal-close-bg');
+
+  if (blogGrid && blogModal && blogModalContent) {
+    // Populate Blog Grid
+    BLOG_POSTS_DATA.forEach(post => {
+      const card = document.createElement('div');
+      card.className = 'blog-card reveal';
+      card.innerHTML = `
+        <div class="blog-card-meta">${post.category} · ${post.date}</div>
+        <h3>${post.title}</h3>
+        <p>${post.excerpt}</p>
+        <span class="blog-read-more">Read Insight →</span>
+      `;
+      
+      card.addEventListener('click', () => {
+        // Render detailed content
+        blogModalContent.innerHTML = post.content;
+        
+        // Re-inject close button since we overwrite innerHTML
+        blogModalContent.appendChild(blogModalCloseBtn);
+        
+        // Open modal
+        blogModal.classList.add('active');
+        blogModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Lock scrolling
+      });
+      
+      blogGrid.appendChild(card);
+    });
+
+    // Modal close handlers
+    const closeModal = () => {
+      blogModal.classList.remove('active');
+      blogModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    if (blogModalCloseBtn) blogModalCloseBtn.addEventListener('click', closeModal);
+    if (blogModalCloseBg) blogModalCloseBg.addEventListener('click', closeModal);
+    
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && blogModal.classList.contains('active')) {
+        closeModal();
+      }
+    });
   }
 
 });
