@@ -1240,3 +1240,252 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 }
+
+/* --- Additional Responsive Optimization & Layout Fixes --- */
+@media (max-width: 992px) {
+  /* Fix horizontal overflow globally */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+  }
+
+  /* Grid Layout Fixes to prevent horizontal shift */
+  .services-grid, .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+    width: 100%;
+  }
+
+  /* Card padding reduction to fit screen */
+  .service-card, .pricing-card {
+    padding: 32px 24px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Reduce section padding for mobile */
+  .section {
+    padding: 70px 0 !important;
+  }
+
+  /* Contact section layout and form padding fix */
+  .contact-form-wrap {
+    padding: 30px 24px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Ecosystem Card & buttons wrapping fix */
+  .ecosystem-card {
+    padding: 36px 24px !important;
+  }
+  
+  .ecosystem-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn-ecosystem {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Hero mock dashboard alignment and sizing */
+  .mock-dashboard {
+    padding: 20px !important;
+    max-width: 100% !important;
+  }
+  
+  .mock-bars-graphic {
+    gap: 8px !important;
+    height: 100px !important;
+  }
+}
+
+/* --- Detailed Pricing & Tabs Layout --- */
+.detailed-pricing-wrap {
+  margin-top: 80px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.detailed-pricing-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.detailed-pricing-header h3 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.detailed-pricing-header p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.pricing-tabs-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  min-height: 450px;
+}
+
+.pricing-tabs-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-right: 1px solid var(--border-glass);
+  padding-right: 20px;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.tab-btn:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab-btn.active {
+  color: var(--neon-blue);
+  background: rgba(0, 242, 254, 0.06);
+  border-color: rgba(0, 242, 254, 0.2);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.05);
+}
+
+.pricing-panels {
+  position: relative;
+}
+
+.pricing-panel {
+  display: none;
+  animation: fadeIn 0.4s ease forwards;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pricing-panel.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.service-price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-smooth);
+}
+
+.service-price-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--border-glass-hover);
+  transform: translateX(4px);
+}
+
+.service-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.service-price-tag {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--neon-blue);
+  background: rgba(0, 242, 254, 0.08);
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.05);
+  white-space: nowrap;
+}
+
+.service-price-tag.free-tag {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.08);
+  border-color: rgba(52, 211, 153, 0.15);
+}
+
+.detailed-pricing-notes {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-glass);
+}
+
+.detailed-pricing-notes p {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.detailed-pricing-notes ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.detailed-pricing-notes li {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  list-style-type: disc;
+}
+
+/* Responsive adjustments for pricing tabs */
+@media (max-width: 992px) {
+  .pricing-tabs-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .pricing-tabs-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: none;
+    border-bottom: 1px solid var(--border-glass);
+    padding-right: 0;
+    padding-bottom: 20px;
+    justify-content: center;
+  }
+
+  .tab-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .detailed-pricing-wrap {
+    padding: 24px 20px !important;
+  }
+}
+
+

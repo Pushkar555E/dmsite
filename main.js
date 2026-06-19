@@ -239,4 +239,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- 7. A-la-Carte Pricing Tabs Controller ---
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const pricingPanels = document.querySelectorAll('.pricing-panel');
+
+  if (tabButtons.length > 0 && pricingPanels.length > 0) {
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons and panels
+        tabButtons.forEach(b => b.classList.remove('active'));
+        pricingPanels.forEach(p => p.classList.remove('active'));
+
+        // Add active class to clicked button and target panel
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-target');
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      });
+    });
+  }
+
 });
