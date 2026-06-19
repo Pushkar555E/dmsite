@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const getLink = (target) => {
     const PRODUCTION_DOMAINS = {
-      dev: 'https://your-dev-portfolio-url.com',
-      cafe: 'https://your-cybercafe-url.com'
+      dev: 'https://pushkar-port.vercel.app',
+      cafe: 'https://esite.vercel.app'
     };
     const DEV_PORTS = {
       dev: 'http://localhost:5173',
