@@ -33,14 +33,22 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--text);
   background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   overflow-x: hidden;
   line-height: 1.6;
+  letter-spacing: -0.011em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.022em;
+  line-height: 1.25;
 }
 
 a {
@@ -411,7 +419,7 @@ img {
 /* --- Services Grid --- */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 24px;
 }
 
@@ -453,10 +461,65 @@ img {
   line-height: 1.6;
 }
 
+/* --- Process Section --- */
+.process-section {
+  padding: 100px 0;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--border);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 30px;
+}
+
+.process-card {
+  background: var(--grad-dark-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 45px 35px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+
+.process-card:hover {
+  border-color: rgba(0, 242, 254, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 242, 254, 0.05);
+}
+
+.process-step-num {
+  font-size: 48px;
+  font-weight: 800;
+  background: var(--grad-teal-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 20px;
+  opacity: 0.85;
+}
+
+.process-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.process-card p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 /* --- Pricing Section --- */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
   gap: 32px;
   align-items: stretch;
 }
@@ -1226,7 +1289,7 @@ img {
 /* Dynamic Alacarte Grid & Glass Cards */
 .alacarte-rates-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr));
   gap: 20px;
   text-align: left;
   min-height: 180px;
@@ -1713,5 +1776,96 @@ img {
 @media (max-width: 768px) {
   .blog-modal-body {
     padding: 35px 24px;
+  }
+}
+
+/* --- Floating WhatsApp Button --- */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3), 0 12px 24px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5), 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.whatsapp-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  animation: whatsappPulseAnimation 2s infinite ease-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes whatsappPulseAnimation {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  right: 76px;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  background-color: rgba(9, 10, 15, 0.95);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Adjust button spacing on very small viewports */
+@media (max-width: 480px) {
+  .whatsapp-float {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  .whatsapp-icon {
+    width: 26px;
+    height: 26px;
+  }
+  .whatsapp-tooltip {
+    display: none;
   }
 }
