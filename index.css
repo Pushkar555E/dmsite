@@ -818,6 +818,67 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
 }
 
+/* --- Portfolio Showcase --- */
+.portfolio-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.portfolio-card {
+  padding: 2rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 100%;
+}
+
+.portfolio-icon {
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 220px;
+}
+
+.portfolio-icon img {
+  width: 100%;
+  height: auto;
+  background-color: rgba(255,255,255,0.04);
+  padding: 1.5rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.portfolio-icon-light img {
+  background-color: #ffffff;
+}
+
+.portfolio-card h3 {
+  font-size: 1.45rem;
+  margin-bottom: 1rem;
+}
+
+.portfolio-card p {
+  margin-bottom: 1.5rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+}
+
+.portfolio-card .btn {
+  margin-top: auto;
+}
+
+@media (max-width: 760px) {
+  .portfolio-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- "How We Work" Section --- */
 .process-section {
   border-top: 1px solid var(--border-glass);
