@@ -1,5 +1,5 @@
 /* ===================================================================
-   PUSHKAR GROWTH DIGITAL — PREMIUM DARK OVERHAUL
+   MARKET IQ — PREMIUM DARK OVERHAUL
    Theme: Luxury Minimalist Dark Mode with Electric Neon Accents
    =================================================================== */
 
@@ -245,6 +245,16 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   color: var(--text);
   letter-spacing: -0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  flex-shrink: 0;
 }
 
 .nav-logo span {
@@ -387,6 +397,13 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--neon-blue);
   border-radius: 50%;
   animation: pulseDot 2s infinite;
+}
+
+.hero-brand-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 @keyframes pulseDot {
@@ -1085,7 +1102,15 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   color: var(--text);
   margin-bottom: 12px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
 }
 
 .footer-logo span {
@@ -1487,5 +1512,3 @@ h1, h2, h3, h4, h5, h6 {
     padding: 24px 20px !important;
   }
 }
-
-

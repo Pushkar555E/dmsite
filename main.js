@@ -1,5 +1,5 @@
 /* ===================================================================
-   PUSHKAR GROWTH DIGITAL — MAIN CONTROLLER
+   MARKET IQ — MAIN CONTROLLER
    Handling Hero Typing, Scroll Reveals, Mock Dashboard, Mobile Nav & Forms
    =================================================================== */
 
@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cafe: 'http://localhost:5175'
     };
     const RELATIVE_PATHS = {
-      dev: '../PushkarPort/index.html',
-      cafe: '../esite/index.html'
+      dev: 'https://pushkar-port.vercel.app/',
+      cafe: 'https://esite-two.vercel.app/'
     };
     
     if (isFileProtocol) return RELATIVE_PATHS[target];
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 4. Hero Headline Typing Animation ---
-  const typingWords = ["FOOT TRAFFIC. 📍", "LEADS. 🎯", "REVENUE. 📈"];
+  const typingWords = ["ONLINE PRESENCE.", "LOCAL VISIBILITY.", "CUSTOMER TRUST."];
   const typingSpeed = 100;
   const deletingSpeed = 60;
   const delayBetweenWords = 2000;
@@ -138,20 +138,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const barElements = document.querySelectorAll('.mock-bar');
   
   if (chartVal) {
-    // Count up animation for revenue
-    const targetRevenue = 84250;
+    const planningSteps = ['Audit', 'Content', 'SEO', 'Launch'];
     const duration = 2000; // 2 seconds
     const startTimestamp = performance.now();
 
-    const animateRevenue = (timestamp) => {
+    const animatePlanning = (timestamp) => {
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      const easeOutQuad = progress * (2 - progress);
-      const currentVal = Math.floor(easeOutQuad * targetRevenue);
-      
-      chartVal.textContent = '₹' + currentVal.toLocaleString('en-IN');
+      const stepIndex = Math.min(planningSteps.length - 1, Math.floor(progress * planningSteps.length));
+      chartVal.textContent = planningSteps[stepIndex];
       
       if (progress < 1) {
-        requestAnimationFrame(animateRevenue);
+        requestAnimationFrame(animatePlanning);
       }
     };
     
@@ -161,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const visualObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            requestAnimationFrame(animateRevenue);
+            requestAnimationFrame(animatePlanning);
             // Animate bar heights
             barElements.forEach(bar => {
               const targetHeight = bar.style.height;
@@ -176,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { threshold: 0.15 });
       visualObserver.observe(heroVisual);
     } else {
-      requestAnimationFrame(animateRevenue);
+      requestAnimationFrame(animatePlanning);
     }
   }
 
