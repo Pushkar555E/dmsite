@@ -146,11 +146,6 @@ p { color: var(--muted); margin: 0; }
 .logo-cover img { width: min(82%, 320px); max-height: 120px; object-fit: contain; }
 .growth-cover { background: linear-gradient(135deg, #fff7ed, #fef3c7 45%, #ffffff); }
 .nexora-cover { background: radial-gradient(circle at 18% 18%, rgba(6,182,212,.22), transparent 34%), linear-gradient(135deg, #f8fafc, #e0f2fe); }
-.cover-cyan { background: linear-gradient(135deg, #06B6D4, #22C55E); }
-.cover-indigo { background: linear-gradient(135deg, #4F46E5, #2563EB); }
-.cover-purple { background: linear-gradient(135deg, #7C3AED, #06B6D4); }
-.cover-green { background: linear-gradient(135deg, #22C55E, #2563EB); }
-.cover-slate { background: linear-gradient(135deg, #0F172A, #4F46E5); }
 .split-layout, .timeline-layout, .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 42px; align-items: center; }
 .case-stack, .timeline { display: grid; gap: 16px; }
 .case-showcase { display: grid; grid-template-columns: .92fr 1fr; gap: 16px; align-items: stretch; }
@@ -238,6 +233,7 @@ textarea { min-height: 140px; resize: vertical; }
   .hero-visual, .hero-visual img { min-height: 460px; }
   .case-showcase > img { min-height: 360px; }
   .service-grid, .portfolio-grid, .why-grid, .process-grid, .pricing-grid, .resource-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid, .client-logos { grid-template-columns: repeat(2, 1fr); }
   .nav-links { display: none; }
   .nav-actions { display: flex; margin-left: auto; }
@@ -248,6 +244,8 @@ textarea { min-height: 140px; resize: vertical; }
 @media (max-width: 680px) {
   .container { width: min(100% - 28px, 1180px); }
   .section-pad { padding: 76px 0; }
+  .hero { min-height: auto; padding-top: 104px; }
+  .hero-bg::after { opacity: .16; }
   .service-grid, .portfolio-grid, .testimonial-grid, .pricing-grid, .resource-grid, .blog-grid, .why-grid, .process-grid { grid-template-columns: 1fr; }
   .utility-grid { grid-template-columns: 1fr; }
   .brand .logo-img { max-width: 190px; max-height: 44px; }
@@ -260,6 +258,6 @@ textarea { min-height: 140px; resize: vertical; }
   .case-showcase > img { min-height: 260px; }
   .nav-shell { gap: 10px; }
   .icon-btn { padding: .52rem .62rem; font-size: .78rem; }
-  h1 { font-size: clamp(2.8rem, 16vw, 4.4rem); }
+  h1 { font-size: clamp(2.35rem, 11vw, 3.2rem); }
   .footer-grid { grid-template-columns: 1fr; }
 }

@@ -10,19 +10,24 @@
   <meta property="og:title" content="Nexora Digital Services">
   <meta property="og:description" content="Premium website, SEO, advertising, branding, and analytics services for growth-focused companies.">
   <meta property="og:image" content="https://nexoradigital.com/agency/service-workspace.png">
+  <link rel="icon" type="image/png" href="/brand/nexora-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-  <header class="site-header scrolled">
+  <header class="site-header scrolled" id="siteHeader">
     <nav class="nav-shell" aria-label="Primary navigation">
       <a class="brand logo-component" href="index.html" aria-label="Nexora Digital home"><img class="logo-img logo-light" src="/brand/nexora-logo-light.png" alt="Nexora Digital logo"><img class="logo-img logo-dark" src="/brand/nexora-logo-dark.png" alt="Nexora Digital logo"></a>
-      <div class="nav-links active"><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="navLinks"><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
       <div class="nav-actions"><a class="btn btn-primary nav-cta" href="contact.html">Book Consultation</a></div>
     </nav>
   </header>
   <main class="page-main">
     <section class="page-hero">
-      <img src="/agency/service-workspace.png" alt="Nexora Digital website and marketing planning workspace">
+      <img src="/agency/service-workspace.png" alt="Nexora Digital website and marketing planning workspace" fetchpriority="high" decoding="async">
       <div class="container">
         <span class="eyebrow">Services</span>
         <h1>Website, SEO, advertising, and analytics systems built together.</h1>
@@ -32,19 +37,20 @@
     </section>
     <section class="section-pad">
       <div class="container detail-grid">
-        <article class="detail-card" id="web"><img src="/agency/service-workspace.png" alt="Website wireframe and design workspace"><div><span class="eyebrow">Websites</span><h2>High-trust website development</h2><p>Fast pages, premium layouts, strong service sections, conversion CTAs, and clean technical foundations.</p></div></article>
-        <article class="detail-card" id="seo"><img src="/agency/hero-strategy-room.png" alt="Team reviewing SEO growth dashboards"><div><span class="eyebrow">SEO</span><h2>SEO and local search growth</h2><p>Technical SEO, keyword mapping, content structure, local signals, metadata, and reporting clarity.</p></div></article>
-        <article class="detail-card" id="ads"><img src="/agency/analytics-command-center.png" alt="Advertising performance dashboard"><div><span class="eyebrow">Ads</span><h2>Paid acquisition funnels</h2><p>Google and Meta campaign strategy connected to landing pages, tracking, testing, and optimization.</p></div></article>
+        <article class="detail-card" id="web"><img src="/agency/service-workspace.png" alt="Website wireframe and design workspace" loading="lazy" decoding="async"><div><span class="eyebrow">Websites</span><h2>High-trust website development</h2><p>Fast pages, premium layouts, strong service sections, conversion CTAs, and clean technical foundations.</p></div></article>
+        <article class="detail-card" id="seo"><img src="/agency/hero-strategy-room.png" alt="Team reviewing SEO growth dashboards" loading="lazy" decoding="async"><div><span class="eyebrow">SEO</span><h2>SEO and local search growth</h2><p>Technical SEO, keyword mapping, content structure, local signals, metadata, and reporting clarity.</p></div></article>
+        <article class="detail-card" id="ads"><img src="/agency/analytics-command-center.png" alt="Advertising performance dashboard" loading="lazy" decoding="async"><div><span class="eyebrow">Ads</span><h2>Paid acquisition funnels</h2><p>Google and Meta campaign strategy connected to landing pages, tracking, testing, and optimization.</p></div></article>
       </div>
     </section>
     <section class="section-pad alt" id="analytics">
       <div class="container split-layout">
         <div class="section-head left"><span class="eyebrow">Analytics</span><h2>Know what is working before you scale.</h2><p>Nexora sets up the measurement layer: conversion events, dashboards, lead quality tracking, and practical reporting summaries.</p></div>
-        <div class="proof-image"><img src="/agency/analytics-command-center.png" alt="Marketing analytics command center"></div>
+        <div class="proof-image"><img src="/agency/analytics-command-center.png" alt="Marketing analytics command center" loading="lazy" decoding="async"></div>
       </div>
     </section>
   </main>
   <footer class="footer"><div class="footer-bottom">&copy; 2026 Nexora Digital.</div></footer>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
 

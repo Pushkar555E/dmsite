@@ -27,7 +27,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 navToggle?.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('active');
+  const open = navLinks?.classList.toggle('active');
   navToggle.setAttribute('aria-expanded', String(open));
 });
 
@@ -45,28 +45,30 @@ themeToggle?.addEventListener('click', () => {
 });
 
 const searchable = [
-  ['Services', '#services'],
-  ['Portfolio', '#portfolio'],
-  ['Case Studies', '#case-studies'],
+  ['Services', 'services.html'],
+  ['Portfolio', 'portfolio.html'],
+  ['Case Studies', 'portfolio.html#case-studies'],
   ['Industries', '#industries'],
   ['Pricing', '#pricing'],
   ['Resources', '#resources'],
-  ['Blog', '#blog'],
+  ['Blog', 'blog.html'],
   ['Reviews', '#reviews'],
   ['Careers', '#careers'],
-  ['Contact', '#contact'],
+  ['Contact', 'contact.html'],
   ['Book Consultation', '#book'],
   ['Privacy Policy', '#privacy'],
   ['Terms', '#terms'],
 ];
 
 const renderSearch = (query = '') => {
+  if (!searchResults) return;
   const q = query.trim().toLowerCase();
   const results = searchable.filter(([label]) => label.toLowerCase().includes(q)).slice(0, 8);
   searchResults.innerHTML = results.map(([label, href]) => `<a href="${href}">${label}</a>`).join('') || '<p>No matching page found.</p>';
 };
 
 searchOpen?.addEventListener('click', () => {
+  if (!searchModal) return;
   searchModal.classList.add('active');
   searchModal.setAttribute('aria-hidden', 'false');
   renderSearch();
@@ -74,6 +76,7 @@ searchOpen?.addEventListener('click', () => {
 });
 
 searchClose?.addEventListener('click', () => {
+  if (!searchModal) return;
   searchModal.classList.remove('active');
   searchModal.setAttribute('aria-hidden', 'true');
 });
