@@ -195,7 +195,7 @@ textarea { min-height: 140px; resize: vertical; }
 .legal-links { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; padding: 24px; border-top: 1px solid var(--border); color: var(--muted); }
 .footer { background: #020617; color: #fff; padding: 64px 0 24px; }
 .footer p, .footer a { color: #CBD5E1; }
-.footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 34px; }
+.footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 34px; }
 .footer-logo { margin-bottom: 18px; }
 .footer-logo .logo-img { width: min(280px, 100%); max-height: 112px; border-radius: 16px; }
 .footer-grid div { display: grid; gap: 10px; align-content: start; }
