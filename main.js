@@ -18,6 +18,8 @@ const applyTheme = (theme) => {
   document.documentElement.classList.toggle('dark-mode', isDark);
   document.body.classList.toggle('dark-mode', isDark);
   themeToggle?.setAttribute('aria-pressed', String(isDark));
+  const themeText = themeToggle?.querySelector('.theme-switch-text');
+  if (themeText) themeText.textContent = isDark ? 'Dark' : 'Light';
 };
 
 applyTheme(localStorage.getItem('nexora-theme') || 'light');
