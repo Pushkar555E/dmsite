@@ -1,261 +1,133 @@
-/* ===================================================================
-   MARKET IQ — MAIN CONTROLLER
-   Handling Hero Typing, Scroll Reveals, Mock Dashboard, Mobile Nav & Forms
-   =================================================================== */
-
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
+const $ = (selector, scope = document) => scope.querySelector(selector);
+const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 
-  // --- 0. Set dynamic cross-routing link hrefs ---
-  const isLocalServer = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const isFileProtocol = window.location.protocol === 'file:';
-  
-  const getLink = (target) => {
-    const PRODUCTION_DOMAINS = {
-      dev: 'https://pushkar-port.vercel.app',
-      cafe: 'https://esite-two.vercel.app'
-    };
-    const DEV_PORTS = {
-      dev: 'http://localhost:5173',
-      cafe: 'http://localhost:5175'
-    };
-    const RELATIVE_PATHS = {
-      dev: 'https://pushkar-port.vercel.app/',
-      cafe: 'https://esite-two.vercel.app/'
-    };
-    
-    if (isFileProtocol) return RELATIVE_PATHS[target];
-    if (isLocalServer) return DEV_PORTS[target];
-    return PRODUCTION_DOMAINS[target];
-  };
+const header = $('#siteHeader');
+const navToggle = $('#navToggle');
+const navLinks = $('#navLinks');
+const themeToggle = $('#themeToggle');
+const searchOpen = $('#searchOpen');
+const searchClose = $('#searchClose');
+const searchModal = $('#searchModal');
+const siteSearch = $('#siteSearch');
+const searchResults = $('#searchResults');
 
-  document.querySelectorAll('.client-dev-btn').forEach(link => link.setAttribute('href', getLink('dev')));
-  document.querySelectorAll('.client-cyber-btn').forEach(link => link.setAttribute('href', getLink('cafe')));
+const applyTheme = (theme) => {
+  const isDark = theme === 'dark';
+  document.documentElement.classList.toggle('dark-mode', isDark);
+  document.body.classList.toggle('dark-mode', isDark);
+  themeToggle?.setAttribute('aria-pressed', String(isDark));
+};
 
-  // --- 1. Mobile Menu Hamburger Toggle ---
-  const menuToggle = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
+applyTheme(localStorage.getItem('nexora-theme') || 'light');
 
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
+window.addEventListener('scroll', () => {
+  header?.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
 
-    // Close menu when links are clicked
-    const links = navMenu.querySelectorAll('a');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
-    });
-  }
+navToggle?.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('active');
+  navToggle.setAttribute('aria-expanded', String(open));
+});
 
-  // --- 2. Floating Navbar Scroll State ---
-  const navbar = document.getElementById('navbar');
-  if (navbar) {
-    const handleScroll = () => {
-      if (window.scrollY > 40) {
-        navbar.classList.add('scrolled');
+$$('.nav-links a').forEach((link) => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    navToggle?.setAttribute('aria-expanded', 'false');
+  });
+});
+
+themeToggle?.addEventListener('click', () => {
+  const nextTheme = document.documentElement.classList.contains('dark-mode') ? 'light' : 'dark';
+  localStorage.setItem('nexora-theme', nextTheme);
+  applyTheme(nextTheme);
+});
+
+const searchable = [
+  ['Services', '#services'],
+  ['Portfolio', '#portfolio'],
+  ['Case Studies', '#case-studies'],
+  ['Industries', '#industries'],
+  ['Pricing', '#pricing'],
+  ['Resources', '#resources'],
+  ['Blog', '#blog'],
+  ['Reviews', '#reviews'],
+  ['Careers', '#careers'],
+  ['Contact', '#contact'],
+  ['Book Consultation', '#book'],
+  ['Privacy Policy', '#privacy'],
+  ['Terms', '#terms'],
+];
+
+const renderSearch = (query = '') => {
+  const q = query.trim().toLowerCase();
+  const results = searchable.filter(([label]) => label.toLowerCase().includes(q)).slice(0, 8);
+  searchResults.innerHTML = results.map(([label, href]) => `<a href="${href}">${label}</a>`).join('') || '<p>No matching page found.</p>';
+};
+
+searchOpen?.addEventListener('click', () => {
+  searchModal.classList.add('active');
+  searchModal.setAttribute('aria-hidden', 'false');
+  renderSearch();
+  setTimeout(() => siteSearch?.focus(), 50);
+});
+
+searchClose?.addEventListener('click', () => {
+  searchModal.classList.remove('active');
+  searchModal.setAttribute('aria-hidden', 'true');
+});
+
+searchModal?.addEventListener('click', (event) => {
+  if (event.target === searchModal) searchClose.click();
+});
+
+siteSearch?.addEventListener('input', (event) => renderSearch(event.target.value));
+searchResults?.addEventListener('click', () => searchClose.click());
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+$$('.reveal').forEach((el) => revealObserver.observe(el));
+
+const counterObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = Number(el.dataset.target || 0);
+    let current = 0;
+    const step = Math.max(1, Math.ceil(target / 42));
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        el.textContent = target;
+        clearInterval(timer);
       } else {
-        navbar.classList.remove('scrolled');
+        el.textContent = current;
       }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-  }
+    }, 24);
+    observer.unobserve(el);
+  });
+}, { threshold: 0.6 });
 
-  // --- 3. Scroll Reveal Animations (Intersection Observer) ---
-  const revealElements = document.querySelectorAll('.reveal');
-  if (revealElements.length > 0 && typeof IntersectionObserver !== 'undefined') {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -45px 0px'
-    };
+$$('.counter').forEach((counter) => counterObserver.observe(counter));
 
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    revealElements.forEach(el => revealObserver.observe(el));
-  }
-
-  // --- 4. Hero Headline Typing Animation ---
-  const typingWords = ["ONLINE PRESENCE.", "LOCAL VISIBILITY.", "CUSTOMER TRUST."];
-  const typingSpeed = 100;
-  const deletingSpeed = 60;
-  const delayBetweenWords = 2000;
-  
-  const typingContainer = document.getElementById('hero-typing');
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-
-  const typeEffect = () => {
-    if (!typingContainer) return;
-    const currentWord = typingWords[wordIndex];
-
-    if (isDeleting) {
-      // Deleting characters
-      typingContainer.textContent = currentWord.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      // Typing characters
-      typingContainer.textContent = currentWord.substring(0, charIndex + 1);
-      charIndex++;
-    }
-
-    // Determine timeouts
-    let currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
-
-    if (!isDeleting && charIndex === currentWord.length) {
-      // Full word typed, pause before deleting
-      currentSpeed = delayBetweenWords;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      // Word completely deleted, move to next word
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % typingWords.length;
-      currentSpeed = 500; // Small delay before typing next word
-    }
-
-    setTimeout(typeEffect, currentSpeed);
-  };
-
-  if (typingContainer) {
-    typeEffect();
-  }
-
-  // --- 5. Simulated Interactive Dashboard Graphic ---
-  const chartVal = document.getElementById('mock-chart-val');
-  const barElements = document.querySelectorAll('.mock-bar');
-  
-  if (chartVal) {
-    const planningSteps = ['Audit', 'Content', 'SEO', 'Launch'];
-    const duration = 2000; // 2 seconds
-    const startTimestamp = performance.now();
-
-    const animatePlanning = (timestamp) => {
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      const stepIndex = Math.min(planningSteps.length - 1, Math.floor(progress * planningSteps.length));
-      chartVal.textContent = planningSteps[stepIndex];
-      
-      if (progress < 1) {
-        requestAnimationFrame(animatePlanning);
-      }
-    };
-    
-    // Trigger animations when visual enters viewport
-    const heroVisual = document.querySelector('.hero-visual');
-    if (heroVisual && typeof IntersectionObserver !== 'undefined') {
-      const visualObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            requestAnimationFrame(animatePlanning);
-            // Animate bar heights
-            barElements.forEach(bar => {
-              const targetHeight = bar.style.height;
-              bar.style.height = '0%';
-              setTimeout(() => {
-                bar.style.height = targetHeight;
-              }, 100);
-            });
-            visualObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      visualObserver.observe(heroVisual);
-    } else {
-      requestAnimationFrame(animatePlanning);
-    }
-  }
-
-  // --- 6. Contact Form Submission (Web3Forms Integration) ---
-  const contactForm = document.getElementById('mkt-contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const successMsg = document.getElementById('form-success-msg');
-
-  if (contactForm && submitBtn && successMsg) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      submitBtn.disabled = true;
-      const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span>Sending Request...</span>';
-
-      const keyInput = document.getElementById('ala-web3forms-key');
-      const accessKey = keyInput ? keyInput.value : '';
-
-      // Fallback simulation for local dev if key is missing/placeholder
-      if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
-        console.warn('Web3Forms: Using local simulation.');
-        setTimeout(() => {
-          contactForm.reset();
-          successMsg.style.display = 'block';
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          setTimeout(() => {
-            successMsg.style.display = 'none';
-          }, 5000);
-        }, 1200);
-        return;
-      }
-
-      const formData = new FormData(contactForm);
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        if (data.success) {
-          contactForm.reset();
-          successMsg.style.display = 'block';
-          setTimeout(() => {
-            successMsg.style.display = 'none';
-          }, 5000);
-        } else {
-          alert('Submission Error: ' + (data.message || 'Verification failed.'));
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        alert('Network error encountered. Please check connection.');
-      });
+$$('.filter-btn').forEach((button) => {
+  button.addEventListener('click', () => {
+    $$('.filter-btn').forEach((btn) => btn.classList.remove('active'));
+    button.classList.add('active');
+    const filter = button.dataset.filter;
+    $$('.project-card').forEach((card) => {
+      card.hidden = filter !== 'all' && card.dataset.category !== filter;
     });
-  }
+  });
+});
 
-  // --- 7. A-la-Carte Pricing Tabs Controller ---
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const pricingPanels = document.querySelectorAll('.pricing-panel');
-
-  if (tabButtons.length > 0 && pricingPanels.length > 0) {
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Remove active class from all buttons and panels
-        tabButtons.forEach(b => b.classList.remove('active'));
-        pricingPanels.forEach(p => p.classList.remove('active'));
-
-        // Add active class to clicked button and target panel
-        btn.classList.add('active');
-        const targetId = btn.getAttribute('data-target');
-        const targetPanel = document.getElementById(targetId);
-        if (targetPanel) {
-          targetPanel.classList.add('active');
-        }
-      });
-    });
-  }
-
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && searchModal?.classList.contains('active')) searchClose.click();
 });

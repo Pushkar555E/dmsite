@@ -1,838 +1,446 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Primary Meta Tags -->
-  <title>Market IQ | Digital Marketing, Websites & Local SEO</title>
-  <meta name="title" content="Market IQ | Digital Marketing, Websites & Local SEO">
-  <meta name="description" content="Market IQ provides starter-friendly digital marketing, website, social media, Google Business Profile and local SEO support for small businesses in Ichapur and nearby West Bengal areas.">
-
-  <!-- Open Graph / Facebook -->
+  <title>Nexora Digital | Building the Next Era of Digital Growth</title>
+  <meta name="title" content="Nexora Digital | Premium Digital Growth Agency">
+  <meta name="description" content="Nexora Digital is a premium digital agency for websites, SEO, paid ads, social media, brand identity, analytics, and scalable growth systems.">
+  <meta name="keywords" content="Nexora Digital, digital marketing agency, website development, SEO services, local SEO, Google Ads, Meta Ads, growth marketing, brand identity, analytics dashboards">
+  <meta name="author" content="Nexora Digital">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nexoradigital.com/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dmsite-sooty.vercel.app/">
-  <meta property="og:title" content="Market IQ | Smart Marketing. Real Results.">
-  <meta property="og:description" content="Transparent website, social media, Google Business Profile and local SEO support for local businesses.">
-  <meta property="og:site_name" content="Market IQ">
-  <meta property="og:image" content="https://dmsite-sooty.vercel.app/brand-logo.svg">
+  <meta property="og:title" content="Nexora Digital | Premium Digital Growth Agency">
+  <meta property="og:description" content="Modern websites, SEO, advertising, analytics, and digital growth systems for ambitious companies.">
+  <meta property="og:url" content="https://nexoradigital.com/">
+  <meta property="og:image" content="https://nexoradigital.com/agency/hero-strategy-room.png">
+  <meta property="og:site_name" content="Nexora Digital">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Market IQ | Smart Marketing. Real Results.">
-  <meta name="twitter:description" content="Starter-friendly website, social media, Google Business Profile and local SEO support for small businesses.">
-  <meta name="twitter:image" content="https://dmsite-sooty.vercel.app/brand-logo.svg">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <!-- Google Fonts -->
+  <meta name="twitter:title" content="Nexora Digital | Premium Digital Growth Agency">
+  <meta name="twitter:description" content="Building the next era of digital growth.">
+  <meta name="twitter:image" content="https://nexoradigital.com/agency/hero-strategy-room.png">
+  <link rel="icon" type="image/png" href="/brand/nexora-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    if (localStorage.getItem('nexora-theme') === 'dark') {
+      document.documentElement.classList.add('dark-mode');
+    }
+  </script>
   <link rel="stylesheet" href="./index.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Nexora Digital",
+    "description": "Premium digital marketing, website, SEO, advertising, analytics, and brand growth agency.",
+    "url": "https://nexoradigital.com/",
+    "logo": "https://nexoradigital.com/brand/nexora-logo-dark.png",
+    "image": "https://nexoradigital.com/agency/hero-strategy-room.png",
+    "areaServed": "India",
+    "email": "pushkarbusiness05@gmail.com",
+    "telephone": "+91 90076 34717",
+    "sameAs": [],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Digital growth services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website development" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO and local SEO" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google and Meta advertising" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Analytics and conversion tracking" } }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Ambient Glow Orbs -->
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
-
-  <!-- Section 1: Sticky Navigation Bar -->
-  <nav class="header-nav glass" id="navbar">
-    <div class="container nav-container">
-      <a href="/" class="nav-logo">
-        <img src="/brand-logo.svg" alt="Market IQ logo" class="brand-mark">
-        Market <span>IQ</span>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand logo-component" href="/" aria-label="Nexora Digital home">
+        <img class="logo-img logo-light" src="/brand/nexora-logo-light.png" alt="Nexora Digital logo">
+        <img class="logo-img logo-dark" src="/brand/nexora-logo-dark.png" alt="Nexora Digital logo">
       </a>
-
-      <!-- Hamburger Menu for Mobile -->
-      <button class="hamburger-btn" id="menu-toggle" aria-label="Toggle Menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
-
-      <!-- Centered Menu Links -->
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="/" class="nav-link">Home</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#process" class="nav-link">How We Work</a></li>
-        <li><a href="#pricing" class="nav-link">Pricing</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-        <li class="nav-btn-wrap"><a href="#contact" class="btn btn-secondary btn-full">Get Free Audit</a></li>
-      </ul>
-
-      <!-- Action Button Right (Desktop only) -->
-      <a href="#contact" class="btn btn-secondary show-desktop-btn" id="nav-audit-btn">Get Free Audit</a>
-    </div>
-  </nav>
-
-  <!-- Section 2: Hero Section -->
-  <header class="hero-section" id="hero">
-    <div class="container hero-grid">
-      <div class="hero-content reveal">
-        <div class="hero-glow-back"></div>
-        <div class="hero-badge">
-          <img src="/brand-logo.svg" alt="Market IQ logo" class="hero-brand-mark">
-          <span class="hero-badge-dot"></span> Smart Marketing. Real Results.
-        </div>
-        <h1 class="hero-title">
-          We Help Local Businesses Improve Their <br>
-          <span id="hero-typing" class="gradient-text"></span><span class="typed-cursor">|</span>
-        </h1>
-        <p class="hero-tagline">
-          Market IQ helps Ichapur and surrounding areas with custom website, social media, Google Business Profile, local SEO and ad setup support through a clear, transparent work process.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Request a Free Audit</a>
-          <a href="#pricing" class="btn btn-secondary">View Pricing</a>
-        </div>
+      <div class="nav-links" id="navLinks">
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="portfolio.html#case-studies">Case Studies</a>
+        <a href="#pricing">Pricing</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
       </div>
-
-      <!-- Hero Visual: Mock Dashboard Graphic -->
-      <div class="hero-visual reveal">
-        <div class="mock-dashboard glass">
-          <div class="mock-dashboard-header">
-            <div class="mock-window-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="mock-dashboard-tab">Planning Dashboard</div>
-          </div>
-          <div class="mock-chart-widget">
-            <div class="mock-chart-val" id="mock-chart-val">₹0</div>
-            <div class="mock-chart-label">Sample planning view for content, SEO and ads</div>
-            <div class="mock-bars-graphic" id="mock-bars">
-              <div class="mock-bar" style="height: 30%"></div>
-              <div class="mock-bar" style="height: 45%"></div>
-              <div class="mock-bar" style="height: 35%"></div>
-              <div class="mock-bar" style="height: 60%"></div>
-              <div class="mock-bar" style="height: 50%"></div>
-              <div class="mock-bar" style="height: 85%"></div>
-              <div class="mock-bar" style="height: 75%"></div>
-              <div class="mock-bar mock-bar-active" style="height: 95%"></div>
-            </div>
-          </div>
-          <div class="mock-dashboard-stats">
-            <div class="mock-stat-card glass">
-              <div class="mock-stat-num">SEO</div>
-              <div class="mock-stat-title">Local Search Setup</div>
-            </div>
-            <div class="mock-stat-card glass">
-              <div class="mock-stat-num">SMM</div>
-              <div class="mock-stat-title">Social Content Plan</div>
-            </div>
-          </div>
-        </div>
-        <!-- Floating Stat Badges -->
-        <div class="floating-tag tag-1 glass">
-          Content calendar: <strong>planned</strong>
-        </div>
-        <div class="floating-tag tag-2 glass">
-          Ad setup: <strong>optional</strong>
-        </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchOpen" aria-label="Open search">Search</button>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">Mode</button>
+        <a class="btn btn-primary nav-cta" href="#book">Book Consultation</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main>
-    <!-- Section 3: Services Grid -->
-    <section class="services-section section" id="services">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-eyebrow">Our Services</span>
-          <h2 class="section-title">Practical Services for Local Visibility</h2>
-          <p class="section-desc">We focus on clear setup, clean creative work, search-friendly pages and simple reporting without inflated promises.</p>
-        </div>
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <button class="modal-close" id="searchClose" aria-label="Close search">&times;</button>
+      <h2 id="searchTitle">Search Nexora Digital</h2>
+      <input id="siteSearch" type="search" placeholder="Search services, pricing, resources..." aria-label="Search website">
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
 
-        <div class="services-grid">
-          <!-- Card 1: SEO -->
-          <div class="service-card glass reveal">
-            <div class="service-card-icon">🔍</div>
-            <h3>Search Engine Optimization</h3>
-            <ul class="service-bullets">
-              <li><strong>Google Business Profile Support:</strong> Setup, service details, photos, posts and profile optimization guidance.</li>
-              <li><strong>NAP Consistency Matching:</strong> Clean business citation listings across directories to build trust signals.</li>
-              <li><strong>Local Keyword Planning:</strong> Structure pages and content around services people search for in your area.</li>
-            </ul>
+  <main id="main">
+    <section class="hero section-pad" id="home">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Building the next era of digital growth</span>
+          <h1>Premium digital systems for brands that want to look trusted and scale faster.</h1>
+          <p>Nexora Digital designs high-performance websites, acquisition funnels, SEO systems, paid campaigns, and analytics infrastructure for ambitious companies.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#book">Book Consultation</a>
+            <a class="btn btn-secondary" href="#portfolio">View Portfolio</a>
           </div>
-          <!-- Card 2: SMM -->
-          <div class="service-card glass reveal">
-            <div class="service-card-icon">📱</div>
-            <h3>Social Media Management</h3>
-            <ul class="service-bullets">
-              <li><strong>Aesthetic Grid Layouts:</strong> Establish absolute brand trust at first glance with cohesive palettes.</li>
-              <li><strong>Short-Form Video Support:</strong> Edit reels or shorts with clean captions, pacing and branded covers.</li>
-              <li><strong>Active Account Management:</strong> Daily content scheduling and inbox checkups to keep customer inquiries hot.</li>
-            </ul>
+          <div class="trust-row" aria-label="Nexora Digital focus areas">
+            <span>Growth focused</span>
+            <span>Strategy driven</span>
+            <span>Digital first</span>
+            <span>Results that scale</span>
           </div>
-          <!-- Card 3: Paid Ads -->
-          <div class="service-card glass reveal">
-            <div class="service-card-icon">🚀</div>
-            <h3>Targeted Paid Ads</h3>
-            <ul class="service-bullets">
-              <li><strong>Hyper-Local Meta Targeting:</strong> Run ads pointing directly to citizens in Ichapur and surrounding areas.</li>
-              <li><strong>Ad Creative Support:</strong> Design and write simple ad copy for offers, services or local awareness.</li>
-              <li><strong>Performance Optimization:</strong> Continuous pixel-level management to keep ad spend cost per lead low.</li>
-            </ul>
+        </div>
+        <div class="hero-visual reveal">
+          <img src="/agency/hero-strategy-room.png" alt="Nexora Digital team reviewing growth dashboards and campaign strategy">
+          <div class="hero-metric hero-metric-primary">
+            <span>Lead system lift</span>
+            <strong><span class="counter" data-target="128">0</span>%</strong>
+          </div>
+          <div class="hero-metric hero-metric-secondary">
+            <span>Core stack</span>
+            <strong>Web + SEO + Ads</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 4: Pricing Section -->
-    <section class="pricing-section section" id="pricing">
+    <section class="stats section-pad-sm">
+      <div class="container stats-grid">
+        <div class="stat-card reveal"><strong>Web</strong><span>High-trust websites</span></div>
+        <div class="stat-card reveal"><strong>SEO</strong><span>Search-ready structure</span></div>
+        <div class="stat-card reveal"><strong>Ads</strong><span>Campaign landing systems</span></div>
+        <div class="stat-card reveal"><strong>CRO</strong><span>Conversion-focused UX</span></div>
+      </div>
+      <p class="demo-note">Built for honest growth work: clear strategy, clean execution, and measurable next steps.</p>
+    </section>
+
+    <section class="logo-strip section-pad-sm" aria-label="Core capabilities">
       <div class="container">
-        <div class="section-header reveal">
-          <span class="section-eyebrow">Pricing &amp; Retainers</span>
-          <h2 class="section-title">Flexible Growth Packages</h2>
-          <p class="section-desc">Negotiable strategies built to scale local businesses. Find a plan that fits your growth targets.</p>
+        <p class="strip-label">Core growth capabilities</p>
+        <div class="client-logos">
+          <span>Strategy</span><span>Design</span><span>Development</span><span>SEO</span><span>Advertising</span><span>Analytics</span>
         </div>
-
-        <div class="pricing-grid pricing-grid-compact">
-          <div class="pricing-card glass reveal">
-            <span class="package-icon">ST</span>
-            <span class="package-name">Starter</span>
-            <span class="package-tagline">Best for new local businesses</span>
-            <div class="package-price">
-              <span class="package-currency">INR</span>
-              <span class="package-amount">2,999</span>
-              <span class="package-period">/mo</span>
-            </div>
-            <ul class="package-features-list">
-              <li>1 Social Grid Layout (9 custom posts)</li>
-              <li>Google Profile Setup &amp; Optimization</li>
-              <li>Monthly Content &amp; Story Roadmap</li>
-              <li>8 Curated Brand Social Graphics</li>
-              <li>Basic Profile Performance Report</li>
-            </ul>
-            <a href="#contact" class="btn btn-secondary btn-full">Get Started</a>
-          </div>
-
-          <div class="pricing-card glass popular reveal">
-            <div class="popular-badge">Best Value</div>
-            <span class="package-icon">GR</span>
-            <span class="package-name">Growth</span>
-            <span class="package-tagline">Best for regular content and visibility</span>
-            <div class="package-price">
-              <span class="package-currency">INR</span>
-              <span class="package-amount">4,999</span>
-              <span class="package-period">/mo</span>
-            </div>
-            <ul class="package-features-list">
-              <li>3 Key Social Platforms Management</li>
-              <li>15 Custom Branded Posts &amp; Stories</li>
-              <li>Aesthetic Grid System Custom Template</li>
-              <li>Active Community &amp; Message Engagement</li>
-              <li>Short-form Video/Reels Strategy Plans</li>
-              <li>Monthly Competitor SEO &amp; Traffic Audit</li>
-            </ul>
-            <a href="#contact" class="btn btn-primary btn-full">Contact Now</a>
-          </div>
-
-          <div class="pricing-card glass reveal">
-            <span class="package-icon">PR</span>
-            <span class="package-name">Pro</span>
-            <span class="package-tagline">Best for ads, reels, and multi-channel support</span>
-            <div class="package-price">
-              <span class="package-currency">INR</span>
-              <span class="package-amount">7,999</span>
-              <span class="package-period">/mo</span>
-            </div>
-            <ul class="package-features-list">
-              <li>All Social Channels Fully Managed</li>
-              <li>20 Custom Graphics + Daily Active Stories</li>
-              <li>4 Edited Short-Form Reels/TikToks</li>
-              <li>Meta Ad Campaign Setup &amp; Copywriting</li>
-              <li>Local Maps SEO citation amplification</li>
-              <li>Priority Support &amp; Weekly Progress Call</li>
-            </ul>
-            <a href="#contact" class="btn btn-secondary btn-full">Get Quote</a>
-          </div>
-
-          <div class="pricing-card glass reveal">
-            <span class="package-icon">CX</span>
-            <span class="package-name">Custom</span>
-            <span class="package-tagline">Best for websites, ads, SEO, or mixed needs</span>
-            <div class="package-price custom-price">
-              <span class="package-amount">Custom</span>
-            </div>
-            <ul class="package-features-list">
-              <li>Website, SEO, social media, or ads bundle</li>
-              <li>Scope based on business goals and budget</li>
-              <li>Flexible one-time or monthly work</li>
-              <li>Clear quote before work starts</li>
-            </ul>
-            <a href="#contact" class="btn btn-secondary btn-full">Contact Now</a>
-          </div>
-        </div>
-        <!-- Detailed Price List Section -->
-        <details class="detailed-pricing-wrap reveal"><summary class="pricing-details-summary"><span><strong>View all a-la-carte service rates</strong><small>Setup, design, ads, SEO, websites, and free intro offers.</small></span><span class="summary-action">View Details</span></summary><div class="detailed-pricing-inner"><div class="detailed-pricing-header">
-            <h3>A-la-Carte Service Rates</h3>
-            <p>Introductory, highly flexible pricing tailored to your scale. <strong>All rates are negotiable.</strong></p>
-          </div>
-
-          <div class="pricing-tabs-layout">
-            <!-- Left Side: Tabs Navigation -->
-            <div class="pricing-tabs-nav">
-              <button class="tab-btn active" data-target="social-setup">
-                <span class="tab-icon">📱</span> Social Media Setup
-              </button>
-              <button class="tab-btn" data-target="social-design">
-                <span class="tab-icon">🎨</span> Social Media Design
-              </button>
-              <button class="tab-btn" data-target="video-services">
-                <span class="tab-icon">🎬</span> Reel &amp; Video
-              </button>
-              <button class="tab-btn" data-target="smm-packages">
-                <span class="tab-icon">📦</span> SMM Packages
-              </button>
-              <button class="tab-btn" data-target="meta-ads">
-                <span class="tab-icon">📢</span> Meta Ads (FB &amp; IG)
-              </button>
-              <button class="tab-btn" data-target="google-ads">
-                <span class="tab-icon">📈</span> Google Ads
-              </button>
-              <button class="tab-btn" data-target="google-maps">
-                <span class="tab-icon">📍</span> Google Maps (GBP)
-              </button>
-              <button class="tab-btn" data-target="seo-services">
-                <span class="tab-icon">🔍</span> SEO Services
-              </button>
-              <button class="tab-btn" data-target="web-services">
-                <span class="tab-icon">💻</span> Website Services
-              </button>
-              <button class="tab-btn" data-target="marketing-packages">
-                <span class="tab-icon">⚡</span> Marketing Packages
-              </button>
-              <button class="tab-btn" data-target="free-offers">
-                <span class="tab-icon">🎁</span> Free Introductory Offers
-              </button>
-            </div>
-
-            <!-- Right Side: Content Panels -->
-            <div class="pricing-panels">
-              <!-- 1. Social Media Setup -->
-              <div class="pricing-panel active" id="social-setup">
-                <div class="service-price-item">
-                  <span class="service-name">Facebook Business Page Setup</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Instagram Business Setup</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">LinkedIn Business Page Setup</span>
-                  <span class="service-price-tag">₹599</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Google Business Profile Setup</span>
-                  <span class="service-price-tag">₹799</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Google Business Profile Verification Assistance</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Google Business Profile Optimization</span>
-                  <span class="service-price-tag">₹999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">WhatsApp Business Setup</span>
-                  <span class="service-price-tag">₹399</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Social Media Audit</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-              </div>
-
-              <!-- 2. Social Media Design -->
-              <div class="pricing-panel" id="social-design">
-                <div class="service-price-item">
-                  <span class="service-name">Single Post Design</span>
-                  <span class="service-price-tag">₹149</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Carousel Post (up to 5 slides)</span>
-                  <span class="service-price-tag">₹399</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Story Design</span>
-                  <span class="service-price-tag">₹99</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Reel Cover Design</span>
-                  <span class="service-price-tag">₹99</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Thumbnail Design</span>
-                  <span class="service-price-tag">₹149</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Festival Post</span>
-                  <span class="service-price-tag">₹199</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Product Promotion Post</span>
-                  <span class="service-price-tag">₹249</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Banner / Menu Design</span>
-                  <span class="service-price-tag">₹399</span>
-                </div>
-              </div>
-
-              <!-- 3. Reel & Video Services -->
-              <div class="pricing-panel" id="video-services">
-                <div class="service-price-item">
-                  <span class="service-name">Reel Upload</span>
-                  <span class="service-price-tag">₹99</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Basic Reel Editing</span>
-                  <span class="service-price-tag">₹399</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Advanced Reel Editing</span>
-                  <span class="service-price-tag">₹799</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">YouTube Shorts Editing</span>
-                  <span class="service-price-tag">₹399</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Caption Addition</span>
-                  <span class="service-price-tag">₹149</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Background Music &amp; Effects</span>
-                  <span class="service-price-tag">₹149</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">30-sec Promotional Video</span>
-                  <span class="service-price-tag">₹699</span>
-                </div>
-              </div>
-
-              <!-- 4. SMM Packages -->
-              <div class="pricing-panel" id="smm-packages">
-                <div class="service-price-item">
-                  <span class="service-name">Starter Package</span>
-                  <span class="service-price-tag">₹2,999 /mo</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Standard Package</span>
-                  <span class="service-price-tag">₹4,999 /mo</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Growth Package</span>
-                  <span class="service-price-tag">₹7,999 /mo</span>
-                </div>
-              </div>
-
-              <!-- 5. Meta Ads -->
-              <div class="pricing-panel" id="meta-ads">
-                <div class="service-price-item">
-                  <span class="service-name">Campaign Setup</span>
-                  <span class="service-price-tag">₹999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Ad Copy Writing</span>
-                  <span class="service-price-tag">₹299</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Audience Research</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Pixel Installation</span>
-                  <span class="service-price-tag">₹999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Retargeting Campaign</span>
-                  <span class="service-price-tag">₹1,499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Monthly Ad Management</span>
-                  <span class="service-price-tag">₹2,999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Campaign Optimization</span>
-                  <span class="service-price-tag">₹799</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Performance Report</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-              </div>
-
-              <!-- 6. Google Ads -->
-              <div class="pricing-panel" id="google-ads">
-                <div class="service-price-item">
-                  <span class="service-name">Search Campaign Setup</span>
-                  <span class="service-price-tag">₹1,499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Display Campaign Setup</span>
-                  <span class="service-price-tag">₹1,499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Performance Max Campaign</span>
-                  <span class="service-price-tag">₹1,999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Keyword Research</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Ad Copy Writing</span>
-                  <span class="service-price-tag">₹399</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Conversion Tracking Setup</span>
-                  <span class="service-price-tag">₹999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Monthly Management</span>
-                  <span class="service-price-tag">₹2,999</span>
-                </div>
-              </div>
-
-              <!-- 7. Google Maps (GBP) -->
-              <div class="pricing-panel" id="google-maps">
-                <div class="service-price-item">
-                  <span class="service-name">Create New Profile</span>
-                  <span class="service-price-tag">₹799</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Profile Optimization</span>
-                  <span class="service-price-tag">₹999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Add Products / Services</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Weekly Business Posts</span>
-                  <span class="service-price-tag">₹699 /mo</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Photo Upload</span>
-                  <span class="service-price-tag">₹299</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Business Description</span>
-                  <span class="service-price-tag">₹299</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Q&amp;A Setup</span>
-                  <span class="service-price-tag">₹299</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Review Management</span>
-                  <span class="service-price-tag">₹599 /mo</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Google Maps SEO (Basic)</span>
-                  <span class="service-price-tag">₹1,999</span>
-                </div>
-              </div>
-
-              <!-- 8. SEO Services -->
-              <div class="pricing-panel" id="seo-services">
-                <div class="service-price-item">
-                  <span class="service-name">SEO Audit</span>
-                  <span class="service-price-tag">₹999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">On-Page SEO</span>
-                  <span class="service-price-tag">₹2,499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Local SEO</span>
-                  <span class="service-price-tag">₹2,999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Keyword Research</span>
-                  <span class="service-price-tag">₹799</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Meta Title &amp; Description</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Image SEO</span>
-                  <span class="service-price-tag">₹499</span>
-                </div>
-              </div>
-
-              <!-- 9. Website Services -->
-              <div class="pricing-panel" id="web-services">
-                <div class="service-price-item">
-                  <span class="service-name">Landing Page</span>
-                  <span class="service-price-tag">₹2,999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Portfolio Website</span>
-                  <span class="service-price-tag">₹4,999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Business Website</span>
-                  <span class="service-price-tag">₹6,999</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Google Analytics Setup</span>
-                  <span class="service-price-tag">₹799</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Google Search Console Setup</span>
-                  <span class="service-price-tag">₹799</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Basic Website SEO</span>
-                  <span class="service-price-tag">₹1,499</span>
-                </div>
-              </div>
-
-              <!-- 10. Marketing Packages -->
-              <div class="pricing-panel" id="marketing-packages">
-                <div class="service-price-item">
-                  <span class="service-name">Basic Marketing Package</span>
-                  <span class="service-price-tag">₹4,999 /mo</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Standard Marketing Package</span>
-                  <span class="service-price-tag">₹7,999 /mo</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Premium Marketing Package</span>
-                  <span class="service-price-tag">₹12,999 /mo</span>
-                </div>
-              </div>
-
-              <!-- 11. Free Offers -->
-              <div class="pricing-panel" id="free-offers">
-                <div class="service-price-item">
-                  <span class="service-name">Free Marketing Audit</span>
-                  <span class="service-price-tag free-tag">FREE</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Free Competitor Analysis</span>
-                  <span class="service-price-tag free-tag">FREE</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Free Google Profile Audit</span>
-                  <span class="service-price-tag free-tag">FREE</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">Free Social Media Audit</span>
-                  <span class="service-price-tag free-tag">FREE</span>
-                </div>
-                <div class="service-price-item">
-                  <span class="service-name">15-Minute Consultation</span>
-                  <span class="service-price-tag free-tag">FREE</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Notes Footer -->
-          <div class="detailed-pricing-notes">
-            <p>📢 <strong>Important Notes:</strong></p>
-            <ul>
-              <li>All pricing listed above represents introductory/beginner recommendations and is <strong>fully negotiable</strong> to fit your business size, budget, and goals.</li>
-              <li>Ad campaign spend budget is paid directly to advertising platforms (Meta, Google) and is always separate from management fees.</li>
-            </ul>
-          </div>
-          </div>
-        </details>
       </div>
     </section>
 
-    <!-- Section 5: How We Work -->
-    <section class="process-section section" id="process">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-eyebrow">How We Work</span>
-          <h2 class="section-title">Our Transparent 3-Step Process</h2>
-          <p class="section-desc">Simple planning, clear approvals and steady execution so you know what is being done each month.</p>
+    <section class="section-pad visual-proof">
+      <div class="container proof-grid">
+        <div class="proof-image reveal">
+          <img src="/agency/service-workspace.png" alt="Website design, analytics, SEO, and campaign planning workspace">
         </div>
-
-        <div class="process-timeline reveal">
-          <!-- Step 1 -->
-          <div class="process-step">
-            <div class="process-step-num">01</div>
-            <h3>Discovery Audit</h3>
-            <p>We perform a detailed analysis of your current online footprint, competitor strengths, and local search trends completely <strong>free of charge</strong>.</p>
-          </div>
-          <!-- Step 2 -->
-          <div class="process-step">
-            <div class="process-step-num">02</div>
-            <h3>Custom Strategy</h3>
-            <p>We draft a custom content layout blueprint, social graphic guidelines, and target local keyword sheet tailored to fit your specific budget.</p>
-          </div>
-          <!-- Step 3 -->
-          <div class="process-step">
-            <div class="process-step-num">03</div>
-            <h3>Active Growth</h3>
-            <p>We coordinate, schedule, and run SMM profiles, optimize search engine listings, manage paid ads, and route sales inquiries directly to your business.</p>
+        <div class="proof-copy reveal">
+          <span class="eyebrow">What was missing</span>
+          <h2>More than a good-looking page. A full trust-building system.</h2>
+          <p>Your agency site needs to prove capability fast: real visuals, clear offers, specific outcomes, pricing direction, contact routes, and enough detail for a serious buyer to feel safe taking the next step.</p>
+          <div class="proof-list">
+            <span>Conversion-focused structure</span>
+            <span>Premium agency imagery</span>
+            <span>Proof and process sections</span>
+            <span>Clear offer paths</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section: Featured Client Work -->
-    <section class="portfolio-section section" id="portfolio">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-eyebrow">Featured Client</span>
-          <h2 class="section-title">Sample Work &amp; Related Project</h2>
-          <p class="section-desc">A real related brand/site from the same workspace, shown as an example of website and presentation work.</p>
-        </div>
-        <div class="portfolio-showcase-grid">
-          <article class="portfolio-card glass reveal">
-            <div class="portfolio-icon"><img src="/brand-logo.svg" alt="Market IQ logo showcase"></div>
-            <h3>Market IQ — Digital Marketing Services</h3>
-            <p>A clean digital marketing website concept focused on service presentation, visual trust and clear calls to action.</p>
-            <a href="https://dmsite-sooty.vercel.app/" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">Explore Brand Site</a>
-          </article>
+    <section class="section-pad" id="services">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Services</span>
+        <h2>A complete growth stack, built as one premium system.</h2>
+        <p>Each offer includes strategy, implementation, reporting, and a conversion-focused next step so clients know exactly how Nexora can help.</p>
+      </div>
+      <div class="container service-grid">
+        <article class="service-card reveal"><span>01</span><h3>Website Development</h3><p>Fast, secure, scalable websites built for trust, leads, and search visibility.</p><a href="#book">Plan a website</a></article>
+        <article class="service-card reveal"><span>02</span><h3>Website Design</h3><p>Premium interfaces, product-style layouts, and brand systems that feel enterprise ready.</p><a href="#book">Improve design</a></article>
+        <article class="service-card reveal"><span>03</span><h3>SEO & Local SEO</h3><p>Technical SEO, content architecture, Google Business Profile, and local ranking systems.</p><a href="#book">Grow search</a></article>
+        <article class="service-card reveal"><span>04</span><h3>Google & Meta Ads</h3><p>Campaign strategy, tracking, creative tests, landing pages, and reporting loops.</p><a href="#book">Launch ads</a></article>
+        <article class="service-card reveal"><span>05</span><h3>Brand Identity</h3><p>Messaging, visual direction, landing page copy, and conversion-focused brand assets.</p><a href="#book">Shape brand</a></article>
+        <article class="service-card reveal"><span>06</span><h3>Analytics & Maintenance</h3><p>Dashboards, conversion tracking, website care, uptime checks, and iteration support.</p><a href="#book">Build clarity</a></article>
+      </div>
+    </section>
 
-          <article class="portfolio-card glass reveal" style="--delay:.08s">
-            <div class="portfolio-icon portfolio-icon-light"><img src="./Growth_logo.png" alt="Growth Nest project logo"></div>
-            <h3>Growth Nest — Agency Website</h3>
-            <p>A separate digital marketing agency-style project with polished branding, responsive layout and a live Vercel demo.</p>
-            <a href="https://growth-fawn-two.vercel.app/" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">View Growth Nest</a>
-          </article>
+    <section class="section-pad alt" id="portfolio">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Portfolio</span>
+        <h2>Project formats built for real business outcomes.</h2>
+        <p>Filter by category to explore the kind of systems Nexora Digital can design, build, and optimize.</p>
+      </div>
+      <div class="container filter-bar" role="tablist" aria-label="Portfolio filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web Development</button>
+        <button class="filter-btn" data-filter="seo">SEO</button>
+        <button class="filter-btn" data-filter="social">Social Media</button>
+        <button class="filter-btn" data-filter="brand">Branding</button>
+        <button class="filter-btn" data-filter="ads">Advertising</button>
+      </div>
+      <div class="container portfolio-grid">
+        <article class="project-card client-project reveal" data-category="web"><div class="project-cover logo-cover growth-cover"><img src="/clients/growth-nest-logo.png" alt="Growth Nest logo"></div><span>Client Work / Website</span><h3>Growth Nest</h3><p>A premium digital growth agency website built to present services, sharpen trust, and guide visitors toward strategy calls.</p></article>
+        <article class="project-card client-project reveal" data-category="web"><div class="project-cover logo-cover nexora-cover"><img src="/brand/nexora-logo-dark.png" alt="Nexora Digital logo"></div><span>Own Project / Agency Website</span><h3>Nexora Digital</h3><p>The complete Nexora Digital site: brand presentation, services, portfolio, case-study structure, pricing, resources, and contact flow.</p></article>
+        <article class="project-card reveal" data-category="web"><div class="project-cover image-cover"><img src="/agency/service-workspace.png" alt="Premium website planning workspace"></div><span>Web Development</span><h3>Premium launch platform</h3><p>Conversion-focused website architecture with service pages, trust blocks, analytics, and fast-loading UI.</p></article>
+        <article class="project-card reveal" data-category="seo"><div class="project-cover image-cover"><img src="/agency/hero-strategy-room.png" alt="Team reviewing search and growth dashboards"></div><span>SEO</span><h3>Local search growth system</h3><p>Technical cleanup, keyword structure, content planning, location signals, and reporting workflows.</p></article>
+        <article class="project-card reveal" data-category="ads"><div class="project-cover image-cover"><img src="/agency/analytics-command-center.png" alt="Marketing analytics command center"></div><span>Advertising</span><h3>Lead generation funnel</h3><p>Landing page strategy, campaign messaging, conversion tracking, and weekly optimization rhythm.</p></article>
+        <article class="project-card reveal" data-category="brand"><div class="project-cover image-cover"><img src="/brand/nexora-logo-wide.png" alt="Nexora Digital brand identity presentation"></div><span>Branding</span><h3>Service brand refresh</h3><p>Positioning, visual direction, landing copy, and proof sections that make offers easier to trust.</p></article>
+        <article class="project-card reveal" data-category="social"><div class="project-cover image-cover"><img src="/agency/service-workspace.png" alt="Social media content planning and design workspace"></div><span>Social Media</span><h3>Content growth engine</h3><p>Content pillars, post systems, creative direction, and profile improvements for consistent visibility.</p></article>
+        <article class="project-card reveal" data-category="web"><div class="project-cover image-cover"><img src="/agency/analytics-command-center.png" alt="Landing page performance analytics dashboard"></div><span>Landing Pages</span><h3>Consulting conversion suite</h3><p>Offer strategy, copy blocks, testing plan, and CTA system for high-ticket enquiries.</p></article>
+      </div>
+    </section>
+
+    <section class="section-pad" id="case-studies">
+      <div class="container split-layout">
+        <div class="section-head left reveal">
+          <span class="eyebrow">Case Studies</span>
+          <h2>Deep strategy stories, built for enterprise-level trust.</h2>
+          <p>Each case study framework focuses on problem, research, strategy, execution, measurement, lessons, and next-step recommendations.</p>
+        </div>
+        <div class="case-showcase reveal">
+          <img src="/agency/analytics-command-center.png" alt="Digital marketing analytics dashboard used for campaign reporting">
+          <div class="case-stack">
+            <article class="case-card"><span>Research</span><h3>Map the market before building.</h3><p>Competitor position, conversion friction, search demand, and content gap analysis.</p></article>
+            <article class="case-card"><span>Execution</span><h3>Ship the growth system in phases.</h3><p>Website, SEO, tracking, ad creative, landing pages, and reporting workflows.</p></article>
+            <article class="case-card"><span>Results</span><h3>Report what matters.</h3><p>Track enquiry quality, organic reach, conversion rate, and pipeline signals with honest context.</p></article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="faq-section section" id="faq">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-eyebrow">FAQ</span>
-          <h2 class="section-title">Common Questions</h2>
-          <p class="section-desc">Clear answers before you start a website, social media, SEO or ad setup project.</p>
+    <section class="section-pad alt" id="industries">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Industries</span>
+        <h2>Growth systems for service-led companies.</h2>
+      </div>
+      <div class="container industry-grid">
+        <span>Healthcare</span><span>Education</span><span>Real Estate</span><span>Finance</span><span>Restaurants</span><span>Local Retail</span><span>Professional Services</span><span>SaaS</span>
+      </div>
+    </section>
+
+    <section class="section-pad" id="about">
+      <div class="container timeline-layout">
+        <div class="section-head left reveal">
+          <span class="eyebrow">About Nexora Digital</span>
+          <h2>Mission-led, systems-minded, and built for measurable growth.</h2>
+          <p>Our mission is to help modern companies become easier to trust, easier to find, and easier to buy from through strategy, design, technology, and performance marketing.</p>
+          <div class="about-image">
+            <img src="/agency/hero-strategy-room.png" alt="Nexora Digital strategy and analytics planning session">
+          </div>
         </div>
-        <div class="services-grid">
-          <div class="service-card glass reveal"><h3>Do you guarantee leads or revenue?</h3><p>No. I do not promise fake numbers. I help with proper setup, creative work, local visibility and transparent improvements based on your budget and business details.</p></div>
-          <div class="service-card glass reveal"><h3>Is ad spend included?</h3><p>No. Platform ad spend for Meta or Google is paid separately by the business. The listed prices are for setup, management, creative and support work.</p></div>
-          <div class="service-card glass reveal"><h3>Can beginners start small?</h3><p>Yes. Starter-friendly pricing and negotiable bundles are available for small local businesses that need basic online presence first.</p></div>
+        <div class="timeline">
+          <div><strong>Mission</strong><p>Turn digital presence into a reliable business asset.</p></div>
+          <div><strong>Vision</strong><p>Build the next era of intelligent, elegant growth systems.</p></div>
+          <div><strong>Values</strong><p>Clarity, speed, craft, accountability, and ethical measurement.</p></div>
+          <div><strong>Workflow</strong><p>Discover, design, build, launch, measure, optimize.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Section 6: Converting Footer & Contact -->
-    <section class="contact-section section" id="contact">
+    <section class="section-pad dark-section" id="why">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Why choose Nexora Digital</span>
+        <h2>Premium execution without chaos.</h2>
+      </div>
+      <div class="container why-grid">
+        <article><h3>Strategy before design</h3><p>We define the offer, audience, funnel, and proof before making visual decisions.</p></article>
+        <article><h3>Conversion-first UX</h3><p>Every section has a job: build trust, answer objections, or guide action.</p></article>
+        <article><h3>Performance minded</h3><p>Lean assets, semantic HTML, lazy loading, and Core Web Vitals awareness.</p></article>
+        <article><h3>Reporting clarity</h3><p>Dashboards and summaries explain what changed, why, and what happens next.</p></article>
+      </div>
+    </section>
+
+    <section class="section-pad" id="process">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Process</span>
+        <h2>From audit to scale in a clear timeline.</h2>
+      </div>
+      <div class="container process-grid">
+        <div><span>01</span><h3>Discover</h3><p>Audit goals, audience, search demand, current assets, and competitor gaps.</p></div>
+        <div><span>02</span><h3>Design</h3><p>Define messaging, structure, page flows, and conversion hierarchy.</p></div>
+        <div><span>03</span><h3>Build</h3><p>Develop fast pages, tracking, campaign assets, and reusable components.</p></div>
+        <div><span>04</span><h3>Optimize</h3><p>Improve based on traffic, behaviour, enquiries, and revenue signals.</p></div>
+      </div>
+    </section>
+
+    <section class="section-pad alt" id="reviews">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Reviews</span>
+        <h2>What working with Nexora Digital should feel like.</h2>
+      </div>
+      <div class="container testimonial-grid">
+        <article><div class="stars">Strategy</div><p>Clear discovery, sharp positioning, and practical recommendations before production begins.</p><strong>Focused planning</strong><span>For stronger decisions</span></article>
+        <article><div class="stars">Execution</div><p>Clean interfaces, search-ready pages, reliable tracking, and content that supports conversion.</p><strong>Premium delivery</strong><span>For better launches</span></article>
+        <article><div class="stars">Growth</div><p>Measured improvements, transparent reporting, and iteration based on real audience behaviour.</p><strong>Continuous optimization</strong><span>For smarter scaling</span></article>
+      </div>
+    </section>
+
+    <section class="section-pad" id="tech">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Technology stack</span>
+        <h2>Modern tools for fast, measurable work.</h2>
+      </div>
+      <div class="container tech-grid">
+        <span>Analytics</span><span>Search Console</span><span>Tag Manager</span><span>Meta Ads</span><span>Google Ads</span><span>CMS</span><span>Automation</span><span>Dashboards</span>
+      </div>
+    </section>
+
+    <section class="section-pad alt" id="pricing">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Premium packages with a clear upgrade path.</h2>
+      </div>
+      <div class="container pricing-grid">
+        <article><h3>Starter</h3><p>For foundational presence.</p><strong>Custom quote</strong><ul><li>Audit</li><li>Landing page</li><li>Basic SEO</li><li>Analytics setup</li></ul><a class="btn btn-secondary" href="#book">Start</a></article>
+        <article class="featured"><span>Recommended</span><h3>Growth</h3><p>For active acquisition.</p><strong>Custom quote</strong><ul><li>Website system</li><li>SEO pages</li><li>Ad funnel</li><li>Monthly reporting</li></ul><a class="btn btn-primary" href="#book">Choose Growth</a></article>
+        <article><h3>Professional</h3><p>For multi-channel scale.</p><strong>Custom quote</strong><ul><li>Campaign suite</li><li>CRO testing</li><li>Content engine</li><li>Dashboards</li></ul><a class="btn btn-secondary" href="#book">Discuss</a></article>
+        <article><h3>Enterprise</h3><p>For complex teams.</p><strong>Custom quote</strong><ul><li>Strategy pods</li><li>Governance</li><li>Automation</li><li>Priority support</li></ul><a class="btn btn-secondary" href="#book">Contact</a></article>
+      </div>
+    </section>
+
+    <section class="section-pad" id="resources">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Resources</span>
+        <h2>Free templates and guides for better decisions.</h2>
+      </div>
+      <div class="container resource-grid">
+        <article><h3>SEO Checklist</h3><p>Technical and content checks for a stronger launch.</p><a href="#contact" aria-label="Request SEO Checklist">Request guide</a></article>
+        <article><h3>Website Checklist</h3><p>Conversion, speed, accessibility, and trust essentials.</p><a href="#contact" aria-label="Request Website Checklist">Request guide</a></article>
+        <article><h3>Marketing Guide</h3><p>How to structure a premium growth plan.</p><a href="#contact" aria-label="Request Marketing Guide">Request guide</a></article>
+        <article><h3>Brand Checklist</h3><p>Positioning and visual assets before campaign launch.</p><a href="#contact" aria-label="Request Brand Checklist">Request guide</a></article>
+      </div>
+    </section>
+
+    <section class="section-pad alt" id="blog">
+      <div class="container section-head reveal">
+        <span class="eyebrow">Blog</span>
+        <h2>Latest thinking for digital growth teams.</h2>
+      </div>
+      <div class="container blog-grid">
+        <article><img src="/agency/hero-strategy-room.png" alt="Team planning local SEO strategy"><span>SEO</span><h3>How premium service brands win local search</h3><p>Reading time: 6 min. SEO metadata, content structure, and local trust signals explained clearly.</p><a href="blog.html#local-seo">Read SEO guide</a></article>
+        <article><img src="/agency/service-workspace.png" alt="Website conversion planning workspace"><span>CRO</span><h3>Why trust sections matter more than hero copy</h3><p>Reading time: 5 min. Conversion copy and proof strategy for high-ticket buyers.</p><a href="blog.html#trust-sections">Read CRO guide</a></article>
+        <article><img src="/agency/analytics-command-center.png" alt="Advertising performance dashboard"><span>Ads</span><h3>How to stop wasting paid traffic</h3><p>Reading time: 7 min. Funnel diagnosis, creative testing, and landing page alignment.</p><a href="blog.html#paid-traffic">Read ads guide</a></article>
+      </div>
+    </section>
+
+    <section class="section-pad" id="careers">
+      <div class="container split-layout">
+        <div class="section-head left reveal">
+          <span class="eyebrow">Careers</span>
+          <h2>Join a team building premium digital systems.</h2>
+          <p>Share your interest if you work in design, SEO, development, or performance marketing.</p>
+        </div>
+        <form class="card-form" aria-label="Careers application form">
+          <input type="text" placeholder="Your name" aria-label="Your name">
+          <input type="email" placeholder="Email address" aria-label="Email address">
+          <select aria-label="Interested role">
+            <option>UI Designer</option><option>SEO Specialist</option><option>Frontend Developer</option><option>Performance Marketer</option>
+          </select>
+          <button class="btn btn-primary" type="button">Submit Interest</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section-pad alt" id="contact">
       <div class="container contact-grid">
-        <div class="contact-info reveal">
-          <span class="section-eyebrow">Start Growing</span>
-          <h2>Ready to Improve Your Online Presence?</h2>
-          <p>Tell me about your business and goals. I will review your current profiles or website and suggest practical next steps.</p>
-          
+        <div class="section-head left reveal">
+          <span class="eyebrow">Contact</span>
+          <h2>Tell us what you want to build next.</h2>
+          <p>Send a message for website, SEO, advertising, branding, analytics, or growth consultation support.</p>
           <div class="contact-details">
-            <div class="contact-detail-item">
-              <div class="contact-icon">📍</div>
-              <div>
-                <h4>Office Location</h4>
-                <p>Ichapur, West Bengal, India</p>
-              </div>
-            </div>
-            <div class="contact-detail-item">
-              <div class="contact-icon">📧</div>
-              <div>
-                <h4>Direct Email</h4>
-                <p>pushkarbusiness05@gmail.com</p>
-              </div>
-            </div>
+            <a href="mailto:pushkarbusiness05@gmail.com">pushkarbusiness05@gmail.com</a>
+            <a href="https://wa.me/919007634717">WhatsApp: +91 90076 34717</a>
+            <span>Office hours: Mon-Sat, 10:00 AM - 7:00 PM</span>
           </div>
         </div>
-
-        <!-- Contact Form Card -->
-        <div class="contact-form-wrap glass reveal">
-          <form id="mkt-contact-form" class="contact-form">
-            <input type="hidden" name="access_key" id="ala-web3forms-key" value="d3079a1d-d72b-4d02-9031-adb58e812328">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="John Biswas" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Business Email</label>
-              <input type="email" id="email" name="email" placeholder="john@mybusiness.com" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Business Goals</label>
-              <textarea id="message" name="message" rows="4" placeholder="Briefly explain what your shop/business sells and your growth goals..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
-              <span>Send Message</span>
-            </button>
-            <div class="form-success" id="form-success-msg">
-              🎉 Request sent successfully! We will get back to you with your free audit inside 12 hours.
-            </div>
-          </form>
-        </div>
+        <form class="contact-form reveal" aria-label="Contact Nexora Digital">
+          <input type="text" placeholder="Full name" aria-label="Full name">
+          <input type="email" placeholder="Work email" aria-label="Work email">
+          <input type="text" placeholder="Company / brand" aria-label="Company or brand">
+          <textarea placeholder="What do you want to improve?" aria-label="Project message"></textarea>
+          <button class="btn btn-primary" type="button">Request Proposal</button>
+        </form>
       </div>
     </section>
 
-    <!-- Ecosystem Gateway Section -->
-    <section class="ecosystem-section section">
-      <div class="container">
-        <div class="ecosystem-card glass reveal">
-          <h3>Explore My Other Services</h3>
-          <p>Need a developer portfolio reference or local cyber cafe/e-service assistance? Visit my other sites.</p>
-          <div class="ecosystem-buttons">
-            <a href="https://pushkar-port.vercel.app/" class="btn-ecosystem client-dev-btn" target="_blank" rel="noopener">
-              <span class="btn-icon">💻</span>
-              <div>
-                <span class="btn-title">Tech Portfolio</span>
-                <span class="btn-subtitle">Full-Stack &amp; AI Integration</span>
-              </div>
-            </a>
-            <a href="https://esite-two.vercel.app/" class="btn-ecosystem client-cyber-btn" target="_blank" rel="noopener">
-              <span class="btn-icon">🖥️</span>
-              <div>
-                <span class="btn-title">Click Zone</span>
-                <span class="btn-subtitle">e-Services &amp; Portal Desk</span>
-              </div>
-            </a>
-          </div>
+    <section class="section-pad dark-section" id="book">
+      <div class="container final-cta reveal">
+        <div class="logo-component final-logo">
+          <img class="logo-img logo-light" src="/brand/nexora-logo-light.png" alt="Nexora Digital logo">
+          <img class="logo-img logo-dark" src="/brand/nexora-logo-dark.png" alt="Nexora Digital logo">
         </div>
+        <h2>Ready to build a digital presence that feels enterprise-grade?</h2>
+        <p>Book a consultation to review your current digital presence and plan the next practical growth step.</p>
+        <a class="btn btn-primary" href="#contact">Book Consultation</a>
       </div>
+    </section>
+
+    <section class="section-pad utility-pages" aria-label="Utility pages">
+      <div class="container utility-grid">
+        <article id="privacy">
+          <span class="eyebrow">Privacy Policy</span>
+          <h2>Privacy-first communication.</h2>
+          <p>Nexora Digital collects only the details needed to respond to enquiries, prepare proposals, and deliver requested services. Contact details are not sold, and project information is handled with care.</p>
+        </article>
+        <article id="terms">
+          <span class="eyebrow">Terms</span>
+          <h2>Clear scope before work begins.</h2>
+          <p>Project timelines, deliverables, revisions, pricing, and support terms are confirmed in writing before a paid engagement starts. Final terms depend on the selected service and scope.</p>
+        </article>
+        <article id="coming-soon">
+          <span class="eyebrow">Coming Soon</span>
+          <h2>Resources hub in progress.</h2>
+          <p>Guides, checklists, service explainers, and marketing playbooks can be requested from the contact section while the full resource library is prepared.</p>
+        </article>
+        <article id="not-found">
+          <span class="eyebrow">404</span>
+          <h2>Page not found.</h2>
+          <p>If a link is unavailable, return to the homepage or contact Nexora Digital for the latest service information.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="legal-links" aria-label="Legal pages">
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms</a>
+      <a href="#coming-soon">Coming Soon</a>
+      <a href="#not-found">404 Page Preview</a>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer-section">
+  <footer class="footer">
     <div class="container footer-grid">
-      <div class="footer-info">
-        <a href="/" class="footer-logo"><img src="/brand-logo.svg" alt="Market IQ logo" class="footer-brand-mark"> Market <span>IQ</span></a>
-        <p class="footer-desc">Starter-friendly website, local SEO, social media and advertising setup support for local businesses.</p>
-        <div class="footer-trust-anchor">
-          📍 Serving Ichapur, West Bengal &amp; Surrounding Areas
+      <div>
+        <div class="logo-component footer-logo">
+          <img class="logo-img logo-light" src="/brand/nexora-logo-light.png" alt="Nexora Digital logo">
+          <img class="logo-img logo-dark" src="/brand/nexora-logo-dark.png" alt="Nexora Digital logo">
         </div>
+        <p>Building the next era of digital growth through strategy, design, technology, and performance.</p>
       </div>
-      <div class="footer-nav">
-        <h4>Services Map</h4>
-        <ul>
-          <li><a href="#services">Search Engine Optimization</a></li>
-          <li><a href="#services">Social Media Management</a></li>
-          <li><a href="#services">Targeted Paid Ads</a></li>
-        </ul>
-      </div>
+      <div><strong>Company</strong><a href="#about">About</a><a href="#careers">Careers</a><a href="#contact">Contact</a></div>
+      <div><strong>Services</strong><a href="#services">Websites</a><a href="#services">SEO</a><a href="#services">Ads</a></div>
+      <div><strong>Resources</strong><a href="#resources">Checklists</a><a href="#blog">Blog</a><a href="#reviews">Reviews</a></div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Market IQ. Digital marketing, websites and local SEO support. All Rights Reserved.</p>
-    </div>
+    <div class="footer-bottom">&copy; 2026 Nexora Digital. Building the next era of digital growth.</div>
   </footer>
-
-  <!-- Persistent Green WhatsApp Floating Button -->
-  <a href="https://wa.me/919007634717?text=Hi!%20I%20checked%20your%20website%20and%20I'm%20interested%20in%20your%20services." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <div class="whatsapp-tooltip">Chat on WhatsApp</div>
-    <span class="whatsapp-pulse"></span>
-    <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-      <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-    </svg>
-  </a>
 
   <script type="module" src="./main.js"></script>
 </body>
 </html>
+

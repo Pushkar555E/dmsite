@@ -1,9 +1,7 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-# Host
-Host: https://dmsite-sooty.vercel.app
+Host: https://nexoradigital.com
 
-# Sitemaps
-Sitemap: https://dmsite-sooty.vercel.app/sitemap.xml
+Sitemap: https://nexoradigital.com/sitemap.xml
+
