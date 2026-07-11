@@ -80,6 +80,57 @@ $$('.filter-btn').forEach((button) => {
   });
 });
 
+const packageHelperResults = $('#packageHelperResults');
+const renderPackageHelper = (button) => {
+  if (!button || !packageHelperResults) return;
+  $$('.helper-card').forEach((card) => {
+    const active = card === button;
+    card.classList.toggle('active', active);
+    card.setAttribute('aria-selected', String(active));
+  });
+  packageHelperResults.innerHTML = button.dataset.result || '';
+};
+
+$$('.helper-card').forEach((button, index) => {
+  button.setAttribute('role', 'tab');
+  button.setAttribute('aria-selected', String(index === 0));
+  button.addEventListener('click', () => renderPackageHelper(button));
+  button.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    renderPackageHelper(button);
+  });
+  if (index === 0) renderPackageHelper(button);
+});
+
+const pricingStickyCta = $('#pricingStickyCta');
+const stickyDismissedKey = 'nexora-pricing-cta-hidden';
+const updatePricingStickyCta = () => {
+  if (!pricingStickyCta || sessionStorage.getItem(stickyDismissedKey)) return;
+  pricingStickyCta.classList.toggle('visible', window.scrollY > 620);
+};
+
+window.addEventListener('scroll', updatePricingStickyCta, { passive: true });
+updatePricingStickyCta();
+
+$('[data-sticky-close]')?.addEventListener('click', () => {
+  sessionStorage.setItem(stickyDismissedKey, '1');
+  pricingStickyCta?.classList.remove('visible');
+});
+
+const pricingNavLinks = $$('[data-pricing-nav]');
+if ('IntersectionObserver' in window && pricingNavLinks.length) {
+  const sections = pricingNavLinks
+    .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
+    .filter((item) => item.section);
+  const navObserver = new IntersectionObserver((entries) => {
+    const active = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!active) return;
+    sections.forEach(({ link, section }) => link.classList.toggle('active', section === active.target));
+  }, { threshold: 0.18, rootMargin: '-120px 0px -55% 0px' });
+  sections.forEach(({ section }) => navObserver.observe(section));
+}
+
 let activeModal = null;
 let lastFocused = null;
 

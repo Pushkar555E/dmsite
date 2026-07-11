@@ -112,10 +112,76 @@ const packageOptions = [
   ...addOns.map(([name, price]) => [name, price])
 ].filter((item, index, arr) => arr.findIndex((next) => next[0] === item[0]) === index);
 const contactHref = (plan) => `contact.html?package=${slug(plan.name)}#audit`;
-const priceCards = pricing.map((plan) => `<article class="pricing-card ${plan.badge ? 'featured' : ''}">${plan.badge ? `<span class="badge">${plan.badge}</span>` : ''}<span>${plan.pages}</span><h3>${plan.name}</h3><strong>${plan.price}</strong><ul>${plan.includes.map((item) => `<li>${item}</li>`).join('')}<li>${plan.revisions}</li><li>${plan.delivery}</li><li>${plan.support}</li></ul><p>${plan.note}</p><a class="btn btn-secondary" data-track="pricing_cta" href="${contactHref(plan)}">${plan.cta || 'Request quote'}</a></article>`).join('');
-const packageCard = (plan) => `<article class="pricing-card ${plan.badge ? 'featured' : ''}" id="${slug(plan.name)}">${plan.badge ? `<span class="badge">${plan.badge}</span>` : ''}<span>${plan.billing}</span><h3>${plan.name}</h3><strong>${plan.price}</strong><p><strong>Suitable for:</strong> ${plan.suitableFor}</p><p><strong>Delivery:</strong> ${plan.delivery}</p><details open><summary>What is included</summary><ul>${plan.includes.map((item) => `<li>${item}</li>`).join('')}</ul></details>${plan.excludes ? `<details><summary>Not included</summary><ul>${plan.excludes.map((item) => `<li>${item}</li>`).join('')}</ul></details>` : ''}${plan.note ? `<p>${plan.note}</p>` : ''}<a class="btn btn-secondary" data-track="pricing_cta" href="${contactHref(plan)}">Enquire about ${plan.name}</a></article>`;
-const pricingNav = pricingCatalog.map((group) => `<a href="#${group.id}">${group.title}</a>`).join('');
-const compactTable = (rows, caption) => `<div class="table-wrap" role="region" aria-label="${caption}" tabindex="0"><table><caption>${caption}</caption><thead><tr><th scope="col">Item</th><th scope="col">Price</th></tr></thead><tbody>${rows.map(([name, price]) => `<tr><td>${name}</td><td>${price}</td></tr>`).join('')}</tbody></table></div>`;
+const featuredClass = (plan) => plan.featured === 'primary' ? 'primary-featured' : plan.featured ? 'soft-featured' : '';
+const billingLabel = (plan) => plan.billing || (plan.price.includes('/month') ? 'Per month' : 'One-time');
+const shortPackageCta = (plan) => plan.cta || (plan.featured === 'primary' ? 'Choose package' : 'Request quote');
+const keyFeatures = (plan, count = 3) => plan.includes.filter((item) => item !== plan.support && item !== plan.revisions).slice(0, count);
+const priceCards = pricing.map((plan) => `<article class="pricing-card popular-card ${featuredClass(plan)}">${plan.badge ? `<span class="badge">${plan.badge}</span>` : ''}<span>${plan.pages}</span><h3>${plan.name}</h3><p>${plan.audience || plan.note}</p><strong>${plan.price}</strong><small>${billingLabel(plan)}</small><ul>${keyFeatures(plan, 6).map((item) => `<li>${item}</li>`).join('')}</ul><div class="package-meta"><span>${plan.delivery}</span><span>${plan.support}</span></div><p class="pricing-note">${plan.note}</p><div class="card-actions"><a class="btn ${plan.featured === 'primary' ? 'btn-primary' : 'btn-secondary'}" data-track="pricing_cta" href="${contactHref(plan)}">${shortPackageCta(plan)}</a><a class="text-link" href="pricing.html#${slug(plan.name)}">View full details</a></div></article>`).join('');
+const packageCard = (plan) => `<article class="pricing-card package-card ${featuredClass(plan)}" id="${slug(plan.name)}">${plan.badge ? `<span class="badge">${plan.badge}</span>` : ''}<span>${billingLabel(plan)}</span><h3>${plan.name}</h3><strong>${plan.price}</strong><p><strong>Best for:</strong> ${plan.suitableFor}</p><div class="package-meta"><span>Delivery: ${plan.delivery}</span><span>${plan.support ? `Support: ${plan.support}` : billingLabel(plan)}</span></div><ul class="feature-preview">${keyFeatures(plan).map((item) => `<li>${item}</li>`).join('')}</ul><a class="btn ${plan.featured === 'primary' ? 'btn-primary' : 'btn-secondary'}" data-track="pricing_cta" href="${contactHref(plan)}">Request quote</a><details class="package-details"><summary>View full details</summary><div class="details-grid"><div><h4>Included</h4><ul>${plan.includes.map((item) => `<li>${item}</li>`).join('')}</ul></div>${plan.excludes ? `<div class="not-included"><h4>Not included</h4><ul>${plan.excludes.map((item) => `<li>${item}</li>`).join('')}</ul></div>` : ''}</div>${plan.note ? `<p>${plan.note}</p>` : ''}</details></article>`;
+const pricingNavItems = [
+  ['Websites', 'website-pricing'],
+  ['Maintenance', 'maintenance-pricing'],
+  ['SEO', 'seo-pricing'],
+  ['Social Media', 'social-pricing'],
+  ['Advertising', 'ads-pricing'],
+  ['Branding', 'branding-pricing'],
+  ['Local Bundles', 'local-bundles'],
+  ['Add-ons', 'add-ons'],
+  ['Terms', 'payment-terms'],
+  ['FAQ', 'pricing-faq']
+];
+const pricingNav = pricingNavItems.map(([label, id]) => `<a href="#${id}" data-pricing-nav>${label}</a>`).join('');
+const pricingCategoryCopy = {
+  'website-pricing': ['Website packages', 'Build a professional online presence.'],
+  'maintenance-pricing': ['Website care', 'Keep your website secure and updated.'],
+  'seo-pricing': ['Search visibility', 'Help customers find your business online.'],
+  'social-pricing': ['Social content', 'Stay visible with consistent branded content.'],
+  'ads-pricing': ['Paid campaigns', 'Launch focused campaigns with clear management fees.'],
+  'branding-pricing': ['Brand design', 'Create a consistent and recognisable business identity.'],
+  'local-bundles': ['For nearby businesses', 'Practical packages for local business growth.']
+};
+const compactTable = (rows, caption) => `<div class="table-wrap compact-table" role="region" aria-label="${caption}" tabindex="0"><table><caption>${caption}</caption><thead><tr><th scope="col">Item</th><th scope="col">Price</th></tr></thead><tbody>${rows.map(([name, price]) => `<tr><td>${name}</td><td>${price}</td></tr>`).join('')}</tbody></table></div>`;
+const findPlan = (name) => pricingCatalog.flatMap((group) => group.packages).find((plan) => plan.name === name);
+const comparePlans = ['Basic Landing Page', 'Starter Website', 'Business Website', 'Advanced Business Website'].map(findPlan);
+const bool = (value) => value ? 'Yes' : 'No';
+const featureHas = (plan, tests) => {
+  const haystack = [plan.name, plan.suitableFor, ...plan.includes].join(' ').toLowerCase();
+  return tests.some((test) => haystack.includes(test));
+};
+const websiteComparisonRows = [
+  ['Price', ...comparePlans.map((plan) => plan.price)],
+  ['Pages', 'One page', 'Up to three pages', 'Up to five pages', 'Up to eight pages'],
+  ['Responsive design', ...comparePlans.map((plan) => bool(featureHas(plan, ['responsive', 'mobile'])))],
+  ['Contact form', ...comparePlans.map((plan) => bool(featureHas(plan, ['contact form', 'enquiry form'])))],
+  ['WhatsApp', ...comparePlans.map((plan) => bool(featureHas(plan, ['whatsapp'])))],
+  ['Google Maps', ...comparePlans.map((plan) => bool(featureHas(plan, ['maps'])))],
+  ['Basic SEO', ...comparePlans.map((plan) => bool(featureHas(plan, ['seo'])))],
+  ['Analytics', ...comparePlans.map((plan) => bool(featureHas(plan, ['analytics'])))],
+  ['Search Console', ...comparePlans.map((plan) => bool(featureHas(plan, ['search console'])))],
+  ['Revisions', 'One revision round', 'Two revision rounds', 'Two revision rounds', 'Three revision rounds'],
+  ['Support', ...comparePlans.map((plan) => plan.support || 'By scope')],
+  ['Delivery', ...comparePlans.map((plan) => plan.delivery)]
+];
+const websiteComparison = `<div class="container comparison-block">${compactTable(websiteComparisonRows.map(([item, ...values]) => [item, values.join('|')]), 'Compare the core website packages.').replace('<th scope="col">Price</th>', comparePlans.map((plan) => `<th scope="col">${plan.name}</th>`).join('')).replaceAll(/<tr><td>(.*?)<\/td><td>(.*?)<\/td><\/tr>/g, (_match, item, values) => `<tr><th scope="row">${item}</th>${values.split('|').map((value) => `<td>${value}</td>`).join('')}</tr>`)}</div>`;
+const helperOptions = [
+  ['website', 'I need a website', ['Landing Page', 'Business Website']],
+  ['visibility', 'I want more local visibility', ['Local SEO Setup', 'Local Business Package']],
+  ['social', 'I need regular social content', ['Social Starter', 'Social Growth']],
+  ['launch', 'I am launching a new business', ['Local Starter Package', 'Complete Business Launch']]
+];
+const helperCards = helperOptions.map(([id, label, names], index) => {
+  const matches = names.map((name) => packageOptions.find(([optionName]) => optionName === name)).filter(Boolean);
+  const result = `<strong>${matches.map(([name]) => name).join(' + ')}</strong><span>${matches.map(([name, price]) => `${name}: ${price}`).join(' · ')}</span><a class="btn btn-secondary" href="contact.html?package=${slug(matches[0][0])}#audit">Request quote</a>`;
+  return `<button class="helper-card ${index === 0 ? 'active' : ''}" type="button" data-recommendation="${id}" data-result="${esc(result)}"><span>${label}</span><small>${matches.map(([name]) => name).join(' / ')}</small></button>`;
+}).join('');
+const paymentCards = paymentTerms.slice(0, 4).map((term, index) => `<article><strong>${index + 1}</strong><p>${term}</p></article>`).join('');
+const pricingFaqGroups = [
+  ['Pricing and payment', pricingFaqs.slice(0, 4)],
+  ['Websites and delivery', pricingFaqs.slice(4, 7)],
+  ['Marketing expectations', pricingFaqs.slice(7, 10)],
+  ['Support and maintenance', pricingFaqs.slice(10)]
+];
+const pricingFaqMarkup = pricingFaqGroups.map(([title, items]) => `<section class="faq-group"><h3>${title}</h3>${items.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</section>`).join('');
 const pricingFaqSchema = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: pricingFaqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) });
 
 const projectCards = projects.map((project) => {
@@ -210,17 +276,39 @@ function contactSection(id = 'audit') {
 
 const servicesPage = layout({ path: '/services.html', active: 'Services', title: 'Services | Nexora Digital', description: 'Website services, local SEO, social media planning, analytics setup, and maintenance for small businesses and growing brands.', body: `<section class="page-hero"><img src="/agency/service-workspace.png" width="1200" height="750" alt="Website and marketing planning workspace" fetchpriority="high" decoding="async"><div class="container"><span class="eyebrow">Services</span><h1>Practical digital services for growing businesses.</h1><p>Choose one focused service or combine website, SEO, content, analytics, and support into a simple growth plan.</p></div></section>${serviceCards}<section class="section-pad alt" id="pricing"><div class="container section-head"><span class="eyebrow">Pricing summary</span><h2>Starting prices that are easy to edit.</h2><p>Final pricing depends on project scope, content, integrations, timeline, and support requirements.</p></div><div class="container pricing-grid">${priceCards}</div><div class="container center-link"><a class="btn btn-primary" href="pricing.html">View Complete Pricing</a></div></section>${contactSection('service-contact')}` });
 
-const pricingPage = layout({ path: '/pricing.html', active: 'Pricing', title: 'Affordable Website & Digital Marketing Pricing | Nexora Digital', description: 'Affordable website design, SEO, social media, branding, paid advertising and local business package pricing for West Bengal and India.', image: '/agency/analytics-command-center.png', extra: `<script type="application/ld+json">${pricingFaqSchema}</script>`, body: `<section class="page-hero"><img src="/agency/analytics-command-center.png" width="1200" height="750" alt="Nexora Digital pricing and marketing planning dashboard" fetchpriority="high" decoding="async"><div class="container"><span class="eyebrow">Pricing</span><h1>Affordable digital services for local and growing businesses.</h1><p>Clear starting prices for websites, SEO, social media, branding, paid advertising and local business packages. Final quotations depend on project scope, number of pages, content, integrations, delivery timeline and support requirements.</p><div class="hero-actions"><a class="btn btn-primary" href="contact.html#audit">Request a Quote</a><a class="btn btn-secondary" href="#popular-packages">View Popular Packages</a></div></div></section>
-  ${introOffer.enabled ? `<section class="section-pad-sm"><div class="container offer-banner"><strong>${introOffer.title}</strong><span>${introOffer.benefits.join(' • ')}</span><small>${introOffer.note}</small></div></section>` : ''}
-  <section class="section-pad" id="popular-packages"><div class="container section-head"><span class="eyebrow">Popular packages</span><h2>Focused packages for common local business needs.</h2><p>A written project scope and final quotation will be shared before work begins.</p></div><div class="container pricing-grid">${priceCards}</div></section>
-  <nav class="container pricing-nav" aria-label="Pricing categories">${pricingNav}<a href="#add-ons">Add-ons</a><a href="#payment-terms">Payment terms</a><a href="#pricing-faq">FAQ</a></nav>
-  ${pricingCatalog.map((group) => `<section class="section-pad ${group.id === 'local-bundles' ? 'alt' : ''}" id="${group.id}"><div class="container section-head"><span class="eyebrow">${group.title}</span><h2>${group.title}</h2><p>${group.note}</p></div><div class="container pricing-grid catalog-grid">${group.packages.map(packageCard).join('')}</div></section>`).join('')}
+const pricingPage = layout({ path: '/pricing.html', active: 'Pricing', title: 'Affordable Website & Digital Marketing Pricing | Nexora Digital', description: 'Affordable website design, SEO, social media, branding, paid advertising and local business package pricing for West Bengal and India.', image: '/agency/analytics-command-center.png', extra: `<script type="application/ld+json">${pricingFaqSchema}</script>`, body: `<section class="pricing-hero section-pad">
+    <div class="container pricing-hero-grid">
+      <div>
+        <span class="eyebrow">Simple, transparent pricing</span>
+        <h1>Choose the digital support your business needs.</h1>
+        <p>Clear starting prices for websites, SEO, social media, branding and local business packages. Every project receives a written scope and final quotation before work begins.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#popular-packages">Explore Packages</a><a class="btn btn-secondary" href="contact.html#audit">Request a Custom Quote</a></div>
+        <div class="trust-row pricing-trust-row"><span>Clear project scope</span><span>No hidden service fees</span><span>Flexible local-business packages</span></div>
+      </div>
+      <aside class="pricing-summary-card" aria-label="Pricing summary">
+        <span>Starting points</span>
+        <h2>Quick budget guide</h2>
+        <div class="summary-price-grid"><div><strong>Websites</strong><span>from ₹1,499</span></div><div><strong>SEO</strong><span>from ₹499</span></div><div><strong>Social media</strong><span>from ₹1,499/month</span></div><div><strong>Local bundles</strong><span>from ₹3,999</span></div></div>
+        <p>Final pricing depends on pages, content, integrations, timeline and support requirements.</p>
+      </aside>
+    </div>
+  </section>
+  ${introOffer.enabled ? `<section class="section-pad-sm"><div class="container intro-offer-card"><div><span class="eyebrow">Introductory Client Offer</span><h2>Save 10% on eligible website packages.</h2><p>${introOffer.note}</p></div><ul>${introOffer.benefits.map((benefit) => `<li>${benefit}</li>`).join('')}</ul><a class="btn btn-primary" href="contact.html?package=business-website#audit">Claim Introductory Offer</a></div></section>` : ''}
+  <section class="section-pad" id="popular-packages"><div class="container section-head"><span class="eyebrow">Popular packages</span><h2>Start with the package closest to your need.</h2><p>A written project scope and final quotation will be shared before work begins.</p></div><div class="container pricing-grid">${priceCards}</div></section>
+  <section class="section-pad-sm"><div class="container package-helper"><div><span class="eyebrow">Package helper</span><h2>Not sure what to choose?</h2><p>Pick the situation closest to your business and see the most relevant starting options.</p></div><div class="helper-options" role="tablist" aria-label="Package recommendations">${helperCards}</div><div class="helper-result" id="packageHelperResults" role="status" aria-live="polite"></div></div></section>
+  <nav class="container pricing-nav" aria-label="Pricing categories">${pricingNav}</nav>
+  ${pricingCatalog.map((group) => {
+    const copy = pricingCategoryCopy[group.id] || [group.title, group.title];
+    return `<section class="section-pad pricing-category ${group.id === 'local-bundles' ? 'alt' : ''}" id="${group.id}"><div class="container section-head"><span class="eyebrow">${copy[0]}</span><h2>${copy[1]}</h2><p>${group.note}</p></div>${group.id === 'website-pricing' ? websiteComparison : ''}<div class="container pricing-grid catalog-grid">${group.packages.map(packageCard).join('')}</div></section>`;
+  }).join('')}
   <section class="section-pad alt" id="content-pricing"><div class="container split-layout"><div><span class="eyebrow">Individual content prices</span><h2>Small content tasks when you do not need a full package.</h2><p>Bulk pricing may be available for ten or more designs.</p></div>${compactTable(individualContentPrices, 'Individual content pricing')}</div></section>
-  <section class="section-pad" id="add-ons"><div class="container section-head"><span class="eyebrow">Optional add-ons</span><h2>Add only what the project needs.</h2><p>Domain, hosting, premium tools, advertising budgets and third-party charges are separate unless clearly mentioned.</p></div><div class="container">${compactTable(addOns, 'Optional add-on pricing')}</div></section>
-  <section class="section-pad alt" id="payment-terms"><div class="container split-layout"><div><span class="eyebrow">Payment terms</span><h2>Clear payment and handover terms.</h2><p>These terms are shown upfront so there are no hidden expectations.</p></div><div class="stack-list">${paymentTerms.map((term) => `<p>${term}</p>`).join('')}</div></div></section>
-  <section class="section-pad"><div class="container disclaimer-box"><h2>Important pricing conditions</h2><p>All prices are starting prices. Final cost depends on approved scope. Domain, hosting, premium plugins, paid tools and advertising budgets are separate unless stated otherwise. Search rankings, social-media growth, paid-advertising leads, sales and returns cannot be guaranteed. Nexora Digital does not provide fake followers, fake reviews or artificial engagement. Third-party verification and approval are outside Nexora Digital's control. Custom functionality is quoted separately.</p></div></section>
-  <section class="section-pad alt" id="pricing-faq"><div class="container section-head"><span class="eyebrow">Pricing FAQ</span><h2>Questions before requesting a quote.</h2></div><div class="container faq-list">${pricingFaqs.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div></section>
-  <section class="section-pad final-cta"><div class="container cta-card"><h2>Need help choosing the right package?</h2><p>Tell Nexora Digital what you want to build and get a practical recommendation.</p><a class="btn btn-primary" href="contact.html#audit">Request consultation</a></div></section>` });
+  <section class="section-pad" id="add-ons"><div class="container section-head"><span class="eyebrow">Optional services</span><h2>Add only what your project needs.</h2><p>Domain, hosting, premium tools, advertising budgets and third-party charges are separate unless clearly mentioned.</p></div><div class="container">${compactTable(addOns, 'Optional add-on pricing')}</div></section>
+  <section class="section-pad alt"><div class="container section-head"><span class="eyebrow">Next steps</span><h2>What happens after you choose a package?</h2></div><div class="container process-grid pricing-steps"><div><strong>1</strong><h3>Share requirements</h3><p>Send your business details, preferred package and goals.</p></div><div><strong>2</strong><h3>Confirm scope</h3><p>Nexora Digital prepares a written scope and final quote.</p></div><div><strong>3</strong><h3>Start work</h3><p>Work begins after the agreed advance and project materials are received.</p></div><div><strong>4</strong><h3>Review and handover</h3><p>You review the work, request included revisions, then receive the final handover.</p></div></div></section>
+  <section class="section-pad" id="payment-terms"><div class="container section-head"><span class="eyebrow">Payment terms</span><h2>Clear payment and handover terms.</h2><p>These terms are shown upfront so there are no hidden expectations.</p></div><div class="container payment-card-grid">${paymentCards}</div><div class="container terms-details"><details><summary>View complete payment terms</summary><ul>${paymentTerms.map((term) => `<li>${term}</li>`).join('')}</ul></details></div></section>
+  <section class="section-pad alt"><div class="container disclaimer-box"><h2>Important pricing conditions</h2><p>All prices are starting prices. Final cost depends on approved scope. Domain, hosting, premium plugins, paid tools and advertising budgets are separate unless stated otherwise. Search rankings, social-media growth, paid-advertising leads, sales and returns cannot be guaranteed. Nexora Digital does not provide fake followers, fake reviews or artificial engagement. Third-party verification and approval are outside Nexora Digital's control. Custom functionality is quoted separately.</p></div></section>
+  <section class="section-pad" id="pricing-faq"><div class="container section-head"><span class="eyebrow">Pricing FAQ</span><h2>Questions before requesting a quote.</h2></div><div class="container pricing-faq-grid">${pricingFaqMarkup}</div></section>
+  <section class="section-pad final-cta"><div class="container cta-card"><h2>Need help choosing the right package?</h2><p>Tell Nexora Digital what you want to build and get a practical recommendation.</p><a class="btn btn-primary" href="contact.html#audit">Request consultation</a></div></section>
+  <aside class="pricing-sticky-cta" id="pricingStickyCta" aria-label="Pricing quote shortcut"><button type="button" aria-label="Hide quote shortcut" data-sticky-close>&times;</button><div><strong>Need a final quote?</strong><span>Share your package and get a written scope.</span></div><a class="btn btn-primary" href="contact.html#audit">Request quote</a></aside>` });
 
 const portfolioPage = layout({ path: '/portfolio.html', active: 'Portfolio', title: 'Portfolio and Case Studies | Nexora Digital', description: 'Honest portfolio and case studies from Nexora Digital including archived client work, internal work, and concept frameworks.', image: '/clients/growth-nest-logo.png', body: `<section class="page-hero"><img src="/agency/hero-strategy-room.png" width="1200" height="750" alt="Nexora Digital project planning workspace" fetchpriority="high" decoding="async"><div class="container"><span class="eyebrow">Portfolio</span><h1>Client work, internal projects, and archived proof.</h1><p>Every project is labelled honestly. Archived work uses screenshots or proof images, not broken live-demo buttons.</p></div></section><section class="section-pad"><div class="container filter-bar" role="tablist" aria-label="Project filters"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="client">Client Project</button><button class="filter-btn" data-filter="internal">Internal Project</button><button class="filter-btn" data-filter="concept">Concept Project</button></div><div class="container portfolio-grid">${projectCards}</div></section><section class="section-pad alt" id="case-studies"><div class="container section-head"><span class="eyebrow">Case studies</span><h2>Detailed project notes without fake metrics.</h2></div><div class="container case-grid">${projects.map((project) => `<article class="case-card"><span>${project.category} / ${project.status}</span><h3>${project.name}</h3><p><strong>Overview:</strong> ${project.background}</p><p><strong>Challenge:</strong> Present the work clearly and guide visitors toward the right next action.</p><p><strong>Objectives:</strong> ${project.features.join(', ')}.</p><p><strong>My role:</strong> ${project.role}.</p><p><strong>Process:</strong> Review, structure, design, build, test, and prepare launch/archive proof.</p><p><strong>Work completed:</strong> ${project.work.join(', ')}.</p><p><strong>Technologies:</strong> ${project.tools.join(', ')}.</p><p><strong>Final outcome:</strong> ${project.outcome.join(', ')}.</p><p><strong>Lessons learned:</strong> Keep proof honest, make contact paths visible, and avoid broken public links.</p><p><strong>Current status:</strong> ${project.status}.</p>${project.liveUrl ? `<a class="project-link" href="${project.liveUrl}" target="_blank" rel="noopener noreferrer">View live project</a>` : `<button class="project-link button-link" type="button" data-project-open="${project.id}">View screenshots</button>`}</article>`).join('')}</div></section>${projectModals}` });
 
