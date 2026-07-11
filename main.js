@@ -1,3 +1,5 @@
+import { site } from './site.config.js';
+
 'use strict';
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
@@ -7,19 +9,21 @@ const header = $('#siteHeader');
 const navToggle = $('#navToggle');
 const navLinks = $('#navLinks');
 const themeToggle = $('#themeToggle');
-const searchOpen = $('#searchOpen');
-const searchClose = $('#searchClose');
-const searchModal = $('#searchModal');
-const siteSearch = $('#siteSearch');
-const searchResults = $('#searchResults');
+
+const trackEvent = (name, detail = {}) => {
+  if (window.gtag && site.placeholders.ga4MeasurementId !== 'G-REPLACE_ME') {
+    window.gtag('event', name, detail);
+  }
+  window.dispatchEvent(new CustomEvent('nexora:event', { detail: { name, ...detail } }));
+};
 
 const applyTheme = (theme) => {
   const isDark = theme === 'dark';
   document.documentElement.classList.toggle('dark-mode', isDark);
   document.body.classList.toggle('dark-mode', isDark);
   themeToggle?.setAttribute('aria-pressed', String(isDark));
-  const themeText = themeToggle?.querySelector('.theme-switch-text');
-  if (themeText) themeText.textContent = isDark ? 'Dark' : 'Light';
+  const text = themeToggle?.querySelector('.theme-switch-text');
+  if (text) text.textContent = isDark ? 'Dark' : 'Light';
 };
 
 applyTheme(localStorage.getItem('nexora-theme') || 'light');
@@ -29,13 +33,13 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 navToggle?.addEventListener('click', () => {
-  const open = navLinks?.classList.toggle('active');
+  const open = navLinks?.classList.toggle('active') || false;
   navToggle.setAttribute('aria-expanded', String(open));
 });
 
 $$('.nav-links a').forEach((link) => {
   link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
+    navLinks?.classList.remove('active');
     navToggle?.setAttribute('aria-expanded', 'false');
   });
 });
@@ -46,81 +50,23 @@ themeToggle?.addEventListener('click', () => {
   applyTheme(nextTheme);
 });
 
-const searchable = [
-  ['Services', 'services.html'],
-  ['Portfolio', 'portfolio.html'],
-  ['Case Studies', 'portfolio.html#case-studies'],
-  ['Industries', '#industries'],
-  ['Pricing', '#pricing'],
-  ['Resources', '#resources'],
-  ['Blog', 'blog.html'],
-  ['Reviews', '#reviews'],
-  ['Careers', '#careers'],
-  ['Contact', 'contact.html'],
-  ['Book Consultation', '#book'],
-  ['Privacy Policy', '#privacy'],
-  ['Terms', '#terms'],
-];
-
-const renderSearch = (query = '') => {
-  if (!searchResults) return;
-  const q = query.trim().toLowerCase();
-  const results = searchable.filter(([label]) => label.toLowerCase().includes(q)).slice(0, 8);
-  searchResults.innerHTML = results.map(([label, href]) => `<a href="${href}">${label}</a>`).join('') || '<p>No matching page found.</p>';
-};
-
-searchOpen?.addEventListener('click', () => {
-  if (!searchModal) return;
-  searchModal.classList.add('active');
-  searchModal.setAttribute('aria-hidden', 'false');
-  renderSearch();
-  setTimeout(() => siteSearch?.focus(), 50);
+$$('.reveal').forEach((el) => {
+  if (!('IntersectionObserver' in window)) {
+    el.classList.add('visible');
+    return;
+  }
 });
 
-searchClose?.addEventListener('click', () => {
-  if (!searchModal) return;
-  searchModal.classList.remove('active');
-  searchModal.setAttribute('aria-hidden', 'true');
-});
-
-searchModal?.addEventListener('click', (event) => {
-  if (event.target === searchModal) searchClose.click();
-});
-
-siteSearch?.addEventListener('input', (event) => renderSearch(event.target.value));
-searchResults?.addEventListener('click', () => searchClose.click());
-
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('visible');
-    observer.unobserve(entry.target);
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-$$('.reveal').forEach((el) => revealObserver.observe(el));
-
-const counterObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    const el = entry.target;
-    const target = Number(el.dataset.target || 0);
-    let current = 0;
-    const step = Math.max(1, Math.ceil(target / 42));
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        el.textContent = target;
-        clearInterval(timer);
-      } else {
-        el.textContent = current;
-      }
-    }, 24);
-    observer.unobserve(el);
-  });
-}, { threshold: 0.6 });
-
-$$('.counter').forEach((counter) => counterObserver.observe(counter));
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  $$('.reveal').forEach((el) => revealObserver.observe(el));
+}
 
 $$('.filter-btn').forEach((button) => {
   button.addEventListener('click', () => {
@@ -133,6 +79,136 @@ $$('.filter-btn').forEach((button) => {
   });
 });
 
+let activeModal = null;
+let lastFocused = null;
+
+const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+const closeModal = () => {
+  if (!activeModal) return;
+  activeModal.classList.remove('active');
+  activeModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  lastFocused?.focus();
+  activeModal = null;
+};
+
+const openModal = (id) => {
+  const modal = $(`#project-${id}`);
+  if (!modal) return;
+  lastFocused = document.activeElement;
+  activeModal = modal;
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  const firstFocus = $(focusableSelector, modal) || $('.modal-card', modal);
+  firstFocus?.focus();
+};
+
+$$('[data-project-open]').forEach((button) => {
+  button.addEventListener('click', () => openModal(button.dataset.projectOpen));
+});
+
+$$('[data-modal-close]').forEach((button) => button.addEventListener('click', closeModal));
+$$('.project-modal').forEach((modal) => {
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeModal();
+  });
+});
+
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && searchModal?.classList.contains('active')) searchClose.click();
+  if (event.key === 'Escape') closeModal();
+  if (event.key !== 'Tab' || !activeModal) return;
+  const focusables = $$(focusableSelector, activeModal).filter((el) => el.offsetParent !== null);
+  if (!focusables.length) return;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+});
+
+const validateForm = (form) => {
+  const status = $('.form-status', form);
+  const required = $$('[required]', form);
+  for (const field of required) {
+    if ((field.type === 'checkbox' && !field.checked) || !field.value.trim()) {
+      field.focus();
+      if (status) {
+        status.textContent = 'Please complete all required fields before submitting.';
+        status.className = 'form-status error full';
+      }
+      return false;
+    }
+  }
+  const email = $('input[type="email"]', form);
+  if (email && !email.checkValidity()) {
+    email.focus();
+    if (status) {
+      status.textContent = 'Please enter a valid email address.';
+      status.className = 'form-status error full';
+    }
+    return false;
+  }
+  return true;
+};
+
+$$('[data-contact-form]').forEach((form) => {
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const status = $('.form-status', form);
+    const submit = $('button[type="submit"]', form);
+    const accessKey = $('input[name="access_key"]', form)?.value;
+
+    if (!validateForm(form)) return;
+    if (!accessKey || accessKey === site.placeholders.web3formsAccessKey) {
+      if (status) {
+        status.textContent = 'Form is ready, but the Web3Forms access key still needs to be replaced in site.config.js.';
+        status.className = 'form-status error full';
+      }
+      return;
+    }
+
+    submit.disabled = true;
+    submit.textContent = 'Sending...';
+    if (status) {
+      status.textContent = 'Sending your request...';
+      status.className = 'form-status full';
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) throw new Error('Form service rejected the request.');
+      form.reset();
+      trackEvent('contact_form_submission', { form: form.id || 'contact' });
+      if (status) {
+        status.textContent = 'Thank you. Your request was sent successfully.';
+        status.className = 'form-status success full';
+      }
+    } catch (error) {
+      if (status) {
+        status.textContent = 'Something went wrong while sending. Please use WhatsApp or email for now.';
+        status.className = 'form-status error full';
+      }
+    } finally {
+      submit.disabled = false;
+      submit.textContent = submit.dataset.submitLabel || 'Send Request';
+    }
+  });
+});
+
+$$('[data-track], a[href^="mailto:"], a[href*="wa.me"]').forEach((element) => {
+  element.addEventListener('click', () => {
+    const href = element.getAttribute('href') || '';
+    const eventName = element.dataset.track || (href.startsWith('mailto:') ? 'email_click' : href.includes('wa.me') ? 'whatsapp_click' : 'link_click');
+    trackEvent(eventName, { href });
+  });
 });

@@ -13,7 +13,11 @@ export default defineConfig({
         services: resolve(__dirname, 'services.html'),
         portfolio: resolve(__dirname, 'portfolio.html'),
         blog: resolve(__dirname, 'blog.html'),
-        contact: resolve(__dirname, 'contact.html')
+        contact: resolve(__dirname, 'contact.html'),
+        privacy: resolve(__dirname, 'privacy.html'),
+        terms: resolve(__dirname, 'terms.html'),
+        refund: resolve(__dirname, 'refund.html'),
+        notFound: resolve(__dirname, '404.html')
       }
     }
   }
