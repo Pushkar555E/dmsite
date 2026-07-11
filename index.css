@@ -140,6 +140,8 @@ p { color: var(--muted); margin: 0; }
 .service-card span, .case-card span, .project-card span, .blog-grid span { color: var(--accent); font-weight: 900; font-size: .8rem; }
 .service-card p, .project-card p, .case-card p { margin: 14px 0; }
 .service-card a { color: var(--primary); font-weight: 900; }
+.project-link { display: inline-flex; margin-top: 8px; color: var(--primary); font-weight: 900; }
+.project-link:hover { color: var(--accent); }
 .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 28px; }
 .filter-btn { border: 1px solid var(--border); background: var(--surface); color: var(--muted); padding: .7rem 1rem; border-radius: 999px; cursor: pointer; font-weight: 800; }
 .filter-btn.active { background: var(--primary); color: #fff; }
