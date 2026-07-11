@@ -110,6 +110,24 @@ h3 { font-size: 1.25rem; }
 .filter-btn { border: 1px solid var(--border); border-radius: 999px; padding: .7rem 1rem; background: var(--surface); color: var(--muted); font-weight: 900; cursor: pointer; }
 .filter-btn.active { color: #fff; background: var(--primary); }
 .pricing-card strong { display: block; margin: 14px 0; font-size: 1.35rem; color: var(--primary); }
+.pricing-card.featured { border-color: rgba(37,99,235,.45); box-shadow: 0 24px 80px rgba(37,99,235,.16); }
+.badge { display: inline-flex; width: fit-content; margin-bottom: 10px; border-radius: 999px; padding: .34rem .62rem; background: rgba(37,99,235,.1); color: var(--primary) !important; border: 1px solid rgba(37,99,235,.18); }
+.center-link { display: flex; justify-content: center; margin-top: 28px; }
+.pricing-nav { position: sticky; top: 90px; z-index: 8; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; padding: 14px; background: color-mix(in srgb, var(--surface) 88%, transparent); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); backdrop-filter: blur(16px); }
+.pricing-nav a { color: var(--muted); font-weight: 900; border-radius: 999px; padding: .5rem .7rem; }
+.pricing-nav a:hover { color: var(--primary); background: rgba(37,99,235,.08); }
+.catalog-grid { align-items: stretch; }
+.offer-banner { display: grid; gap: 6px; padding: 20px; border: 1px solid rgba(37,99,235,.22); border-radius: 20px; background: linear-gradient(135deg, rgba(37,99,235,.1), rgba(6,182,212,.1)); box-shadow: var(--shadow); }
+.offer-banner strong { font-family: Manrope, Inter, sans-serif; font-size: 1.15rem; }
+.offer-banner span, .offer-banner small { color: var(--muted); }
+.table-wrap { width: 100%; overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+table { width: 100%; border-collapse: collapse; min-width: 560px; }
+caption { text-align: left; padding: 18px 20px; font-weight: 900; color: var(--text); }
+th, td { text-align: left; padding: 14px 20px; border-top: 1px solid var(--border); }
+th { color: var(--muted); font-size: .86rem; text-transform: uppercase; letter-spacing: .04em; }
+.stack-list { display: grid; gap: 10px; }
+.stack-list p, .disclaimer-box p { margin: 0; color: var(--muted); }
+.disclaimer-box { width: min(960px, calc(100% - 32px)); margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px; }
 ul { padding-left: 1.1rem; }
 li { margin: .36rem 0; }
 .article-list { display: grid; gap: 24px; }

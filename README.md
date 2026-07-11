@@ -108,11 +108,45 @@ Only add a `liveUrl` when the link works publicly. For archived work, add proof 
 
 ## How To Update Pricing
 
-Edit the `pricing` array in `site.config.js`. The homepage and services page will update after running:
+Pricing is centralized in `site.config.js`.
+
+- `pricing` controls the four featured homepage packages.
+- `pricingCatalog` controls the complete `pricing.html` catalogue.
+- `addOns` controls optional add-on pricing.
+- `individualContentPrices` controls small content-task pricing.
+- `paymentTerms` controls the payment terms section.
+- `pricingFaqs` controls pricing FAQ content and schema.
+- `introOffer.enabled` turns the introductory offer banner on or off.
+
+The homepage packages currently shown are:
+
+- Landing Page
+- Business Website
+- Social Growth
+- Local Business Package
+
+To add a new package, add it to the correct `pricingCatalog` group with `name`, `price`, `billing`, `suitableFor`, `delivery`, `includes`, and optional `badge`, `note`, or `excludes`.
+
+Pricing CTAs link to `contact.html?package=package-slug#audit`. `main.js` reads the `package` query value and preselects the matching package in the contact form.
+
+After editing pricing data, run:
 
 ```bash
 node scripts/generate-pages.mjs
 ```
+
+Then run the production build again.
+
+Costs excluded unless clearly included in the final scope:
+
+- Domain
+- Hosting
+- Premium plugins or paid tools
+- Advertising budget
+- Payment-gateway charges
+- Product photography
+- Advanced video production
+- Third-party platform fees
 
 ## How To Replace Images
 

@@ -9,6 +9,7 @@ const header = $('#siteHeader');
 const navToggle = $('#navToggle');
 const navLinks = $('#navLinks');
 const themeToggle = $('#themeToggle');
+const urlParams = new URLSearchParams(window.location.search);
 
 const trackEvent = (name, detail = {}) => {
   if (window.gtag && site.placeholders.ga4MeasurementId !== 'G-REPLACE_ME') {
@@ -158,6 +159,16 @@ const validateForm = (form) => {
 };
 
 $$('[data-contact-form]').forEach((form) => {
+  const selectedPackage = urlParams.get('package') || sessionStorage.getItem('nexora-selected-package');
+  const packageSelect = $('[data-package-select]', form);
+  if (selectedPackage && packageSelect) {
+    const option = Array.from(packageSelect.options).find((item) => item.value === selectedPackage);
+    if (option) {
+      packageSelect.value = selectedPackage;
+      sessionStorage.setItem('nexora-selected-package', selectedPackage);
+    }
+  }
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const status = $('.form-status', form);
@@ -208,6 +219,8 @@ $$('[data-contact-form]').forEach((form) => {
 $$('[data-track], a[href^="mailto:"], a[href*="wa.me"]').forEach((element) => {
   element.addEventListener('click', () => {
     const href = element.getAttribute('href') || '';
+    const packageMatch = href.match(/[?&]package=([^&#]+)/);
+    if (packageMatch) sessionStorage.setItem('nexora-selected-package', decodeURIComponent(packageMatch[1]));
     const eventName = element.dataset.track || (href.startsWith('mailto:') ? 'email_click' : href.includes('wa.me') ? 'whatsapp_click' : 'link_click');
     trackEvent(eventName, { href });
   });
