@@ -13,6 +13,7 @@ export default defineConfig({
         services: resolve(__dirname, 'services.html'),
         pricing: resolve(__dirname, 'pricing.html'),
         portfolio: resolve(__dirname, 'portfolio.html'),
+        growthNestCaseStudy: resolve(__dirname, 'case-study-growth-nest.html'),
         blog: resolve(__dirname, 'blog.html'),
         contact: resolve(__dirname, 'contact.html'),
         privacy: resolve(__dirname, 'privacy.html'),

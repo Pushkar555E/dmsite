@@ -211,13 +211,20 @@ const validateForm = (form) => {
 
 $$('[data-contact-form]').forEach((form) => {
   const selectedPackage = urlParams.get('package') || sessionStorage.getItem('nexora-selected-package');
+  const selectedService = urlParams.get('service');
   const packageSelect = $('[data-package-select]', form);
+  const serviceSelect = $('select[name="service"]', form);
   if (selectedPackage && packageSelect) {
     const option = Array.from(packageSelect.options).find((item) => item.value === selectedPackage);
     if (option) {
       packageSelect.value = selectedPackage;
       sessionStorage.setItem('nexora-selected-package', selectedPackage);
     }
+  }
+  if (selectedService && serviceSelect) {
+    const normalizedService = selectedService.replaceAll('-', ' ').toLowerCase();
+    const serviceOption = Array.from(serviceSelect.options).find((item) => item.textContent.trim().toLowerCase().replaceAll(' and ', ' ').includes(normalizedService.replaceAll(' and ', ' ')));
+    if (serviceOption) serviceSelect.value = serviceOption.value || serviceOption.textContent;
   }
 
   form.addEventListener('submit', async (event) => {

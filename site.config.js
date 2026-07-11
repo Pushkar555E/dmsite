@@ -1,6 +1,7 @@
 export const site = {
   brand: 'Nexora Digital',
   baseUrl: 'https://nexora-digital-growth.vercel.app',
+  growthNestUrl: 'https://growth-fawn-two.vercel.app/',
   description: 'Nexora Digital helps small businesses, startups, local brands, and service professionals build professional websites and practical digital growth systems.',
   email: 'pushkarbusiness05@gmail.com',
   phone: '+91 90076 34717',
@@ -14,7 +15,7 @@ export const site = {
     web3formsAccessKey: 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY',
     ga4MeasurementId: 'G-REPLACE_ME',
     googleTagManagerId: 'GTM-REPLACE_ME',
-    searchConsoleVerification: 'REPLACE_WITH_SEARCH_CONSOLE_VERIFICATION_CODE'
+    searchConsoleVerification: ''
   }
 };
 
@@ -200,9 +201,9 @@ export const pricingFaqs = [
 ];
 
 export const projects = [
-  { id: 'growth-nest', name: 'Growth Nest', category: 'Client Project', type: 'Archived Project', image: '/clients/growth-nest-logo.png', proof: '/clients/growth-nest-proof.png', status: 'Archived', liveUrl: '', background: 'Growth Nest was a completed client website/brand presentation project. The original live deployment is no longer publicly available, so the uploaded proof images are shown as an archive.', role: 'Website builder and brand presentation support', work: ['Service-focused website structure', 'Responsive page sections', 'Brand proof presentation', 'Contact flow planning', 'Basic SEO-ready structure'], tools: ['HTML/CSS/JavaScript', 'Responsive design', 'Vercel deployment workflow'], features: ['Clear service positioning', 'Logo-based brand presentation', 'Mobile-friendly layout', 'Contact-oriented CTA flow'], outcome: ['Completed archived project proof added', 'Client work clearly separated from internal projects'] },
-  { id: 'nexora-digital', name: 'Nexora Digital Website', category: 'Internal Project', type: 'Agency Website', image: '/brand/nexora-logo-wide.png', proof: '/agency/service-workspace.png', status: 'Live', liveUrl: 'https://nexora-digital-growth.vercel.app', background: 'The Nexora Digital website is an internal agency website created to present services, pricing, portfolio proof, founder context, contact options, and SEO content.', role: 'Founder project and website build', work: ['Homepage redesign', 'Service structure', 'Pricing system', 'Contact form setup', 'SEO metadata', 'Legal pages'], tools: ['Vite', 'HTML', 'CSS', 'JavaScript', 'Web3Forms-ready form'], features: ['Light/dark mode', 'Responsive navigation', 'Project gallery', 'Functional form structure', 'FAQ schema'], outcome: ['Professional agency presentation completed', 'Contact flow and SEO foundations added'] },
-  { id: 'website-audit-system', name: 'Website Audit System', category: 'Concept Project', type: 'Service Framework', image: '/agency/analytics-command-center.png', proof: '/agency/analytics-command-center.png', status: 'Concept', liveUrl: '', background: 'A reusable framework for reviewing small business websites before recommending paid work.', role: 'Service planning and workflow design', work: ['10-point audit checklist', 'CTA and trust review', 'SEO basics review', 'UX recommendations'], tools: ['Manual review process', 'Website checklist', 'Analytics planning'], features: ['Mobile review', 'Broken link checks', 'Contact accessibility checks', 'Actionable next steps'], outcome: ['Reusable lead-generation offer for Nexora Digital'] }
+  { id: 'growth-nest', name: 'Growth Nest', category: 'Client Project', type: 'Client Website', image: '/clients/growth-nest-homepage.webp', detailImage: '/clients/growth-nest-homepage.webp', status: 'Live Client Project', liveUrl: 'https://growth-fawn-two.vercel.app/', caseStudyUrl: 'case-study-growth-nest.html', background: 'A live digital marketing agency website designed and developed to clearly present services, establish brand credibility and create direct enquiry paths.', role: 'Website design and development', work: ['Website structure', 'Responsive layout', 'Hero and service sections', 'Calls to action', 'Contact flow', 'Brand presentation', 'Navigation structure', 'Vercel deployment'], tools: ['Next.js site output observed from live HTML', 'Vercel deployment'], features: ['Digital marketing service presentation', 'Professional visual identity', 'Navigation for services, industries, pricing, blog, about and FAQ', 'Free audit call to action', 'Contact-oriented page flow'], outcome: ['Live website successfully deployed', 'Services organized clearly', 'Contact routes made visible', 'Consistent online presentation created'] },
+  { id: 'nexora-digital', name: 'Nexora Digital Website', category: 'Internal Project', type: 'Agency Website', image: '/brand/nexora-logo-wide.png', detailImage: '/agency/service-workspace.png', status: 'Live Internal Project', liveUrl: 'https://nexora-digital-growth.vercel.app', background: 'The Nexora Digital website is an internal agency website created to present services, pricing, portfolio, founder context, contact options, and SEO content.', role: 'Founder project and website build', work: ['Homepage redesign', 'Service structure', 'Pricing system', 'Contact form setup', 'SEO metadata', 'Legal pages'], tools: ['Vite', 'HTML', 'CSS', 'JavaScript', 'Web3Forms-ready form'], features: ['Light/dark mode', 'Responsive navigation', 'Project gallery', 'Functional form structure', 'FAQ schema'], outcome: ['Professional agency presentation completed', 'Contact flow and SEO foundations added'] },
+  { id: 'website-audit-system', name: 'Website Audit System', category: 'Concept Project', type: 'Service Framework', image: '/agency/analytics-command-center.png', detailImage: '/agency/analytics-command-center.png', status: 'Concept Project', liveUrl: '', background: 'A reusable framework for reviewing small business websites before recommending paid work.', role: 'Service planning and workflow design', work: ['10-point audit checklist', 'CTA and trust review', 'SEO basics review', 'UX recommendations'], tools: ['Manual review process', 'Website checklist', 'Analytics planning'], features: ['Mobile review', 'Broken link checks', 'Contact accessibility checks', 'Actionable next steps'], outcome: ['Reusable lead-generation offer for Nexora Digital'] }
 ];
 
 export const faqs = [
@@ -217,5 +218,5 @@ export const faqs = [
   ['What information is needed to begin?', 'Your business details, goals, services, contact information, brand assets, existing website if any, and preferred timeline are helpful.'],
   ['Do you provide support after launch?', 'Yes. Support is included for the period listed in each package, and monthly maintenance is available.'],
   ['Can I request only one service?', 'Yes. You can request one service such as a landing page, SEO setup, audit, or maintenance.'],
-  ['What happens if my previous website is unavailable?', 'Archived screenshots or proof images can be used to document completed work without adding broken live demo links.']
+  ['Can I see a live client website?', 'Yes. The Growth Nest client website is live and linked from the portfolio and case-study pages.']
 ];

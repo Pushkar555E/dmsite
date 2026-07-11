@@ -6,8 +6,8 @@ Professional static website for Nexora Digital, a growing digital agency helping
 
 - Responsive homepage, services, portfolio/case studies, blog, contact, legal pages, and 404 page
 - Light and dark mode with saved theme preference
-- Honest project labels: client, internal, archived, and concept work
-- Archived project proof gallery/modal for work without a public live URL
+- Honest project labels: live client, live internal, personal, concept, and archived work
+- Live Growth Nest client case study with real website screenshots
 - Web3Forms-ready contact and audit request form
 - Free 10-point website audit offer
 - Central pricing, services, projects, contact, and placeholder configuration
@@ -28,8 +28,8 @@ Professional static website for Nexora Digital, a growing digital agency helping
 - `scripts/generate-pages.mjs` - generates HTML pages, `sitemap.xml`, and `robots.txt`
 - `index.css` - site styling, responsiveness, dark mode, forms, modal, and layout
 - `main.js` - navigation, theme toggle, form handling, modal/gallery, filtering, and event hooks
-- `public/` - brand assets, client proof images, agency images, sitemap, and robots
-- `index.html`, `services.html`, `portfolio.html`, `blog.html`, `contact.html` - main pages
+- `public/` - brand assets, client website screenshots, agency images, sitemap, and robots
+- `index.html`, `services.html`, `portfolio.html`, `case-study-growth-nest.html`, `blog.html`, `contact.html` - main pages
 - `privacy.html`, `terms.html`, `refund.html`, `404.html` - legal and utility pages
 
 ## Local Setup
@@ -77,7 +77,7 @@ Analytics placeholders are in `site.config.js`:
 ```js
 ga4MeasurementId: 'G-REPLACE_ME'
 googleTagManagerId: 'GTM-REPLACE_ME'
-searchConsoleVerification: 'REPLACE_WITH_SEARCH_CONSOLE_VERIFICATION_CODE'
+searchConsoleVerification: ''
 ```
 
 No fake tracking IDs are inserted. `main.js` already exposes event hooks for form submissions, WhatsApp clicks, email clicks, pricing CTA clicks, audit requests, project clicks, and service clicks when analytics is configured.
@@ -104,7 +104,7 @@ Use accurate labels:
 - `Archived Project`
 - `Concept Project`
 
-Only add a `liveUrl` when the link works publicly. For archived work, add proof images and leave `liveUrl` empty.
+Only add a `liveUrl` when the link works publicly. Use `caseStudyUrl` when a project has a dedicated case-study page. Growth Nest is a live client project at `https://growth-fawn-two.vercel.app/`.
 
 ## How To Update Pricing
 
@@ -155,8 +155,10 @@ Place optimized assets in `public/` and update the relevant image paths in `site
 Current important assets:
 
 - `public/brand/` - Nexora Digital logos
-- `public/clients/growth-nest-logo.png` - Growth Nest public proof/logo asset
-- `public/clients/growth-nest-proof.png` - Growth Nest archived proof asset copied from the uploaded proof file
+- `public/clients/growth-nest-homepage.webp` - real Growth Nest homepage screenshot
+- `public/clients/growth-nest-services.webp` - real Growth Nest section screenshot
+- `public/clients/growth-nest-mobile.webp` - real Growth Nest mobile-size screenshot
+- `public/clients/growth-nest-contact.webp` - real Growth Nest contact/CTA screenshot
 - `public/agency/` - website and marketing visual assets
 
 ## How To Add Testimonials Later
@@ -166,6 +168,7 @@ Do not add fake reviews. Add a real reviews section only after you have genuine 
 ## Current Limitations
 
 - Web3Forms key must be added before live form submissions work.
-- GA4, GTM, and Search Console IDs are placeholders only.
-- Growth Nest is shown as archived client work because the public live deployment is no longer available.
+- GA4 and GTM IDs are placeholders only.
+- Search Console verification is omitted until a real code is configured.
+- Growth Nest is shown as live client work using the public URL `https://growth-fawn-two.vercel.app/`.
 - Legal pages are practical drafts and should be professionally reviewed before the business scales.
