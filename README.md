@@ -6,7 +6,7 @@ Professional static website for Nexora Digital, a growing digital agency helping
 
 - Responsive homepage, services, portfolio/case studies, blog, contact, legal pages, and 404 page
 - Light and dark mode with saved theme preference
-- Honest project labels: live client, live internal, personal, concept, and archived work
+- Honest project labels: live client, live internal, personal, and archived work
 - Live Growth Nest client case study with real website screenshots
 - Web3Forms-ready contact and audit request form
 - Free 10-point website audit offer
@@ -102,7 +102,7 @@ Use accurate labels:
 - `Personal Project`
 - `Internal Project`
 - `Archived Project`
-- `Concept Project`
+Use `Internal Project` for Nexora-owned tools such as SiteLens. Avoid concept labels unless the project is only an idea and not deployed.
 
 Only add a `liveUrl` when the link works publicly. Use `caseStudyUrl` when a project has a dedicated case-study page. Growth Nest is a live client project at `https://growth-fawn-two.vercel.app/`.
 
@@ -172,3 +172,13 @@ Do not add fake reviews. Add a real reviews section only after you have genuine 
 - Search Console verification is omitted until a real code is configured.
 - Growth Nest is shown as live client work using the public URL `https://growth-fawn-two.vercel.app/`.
 - Legal pages are practical drafts and should be professionally reviewed before the business scales.
+
+## Nexora SiteLens Link
+
+The portfolio card and Free Audit CTAs for Nexora SiteLens read the launch URL from:
+
+```env
+NEXT_PUBLIC_SITE_AUDIT_URL=https://audit-system-lime.vercel.app/
+```
+
+For local development, you can temporarily point this value at a local audit-system server. For production, keep it pointed at the deployed SiteLens URL, then regenerate/build this site.

@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 
 export default defineConfig({
   server: {
-    port: 5174,
+    port: 3000,
     strictPort: true
   },
   build: {
@@ -14,6 +14,7 @@ export default defineConfig({
         pricing: resolve(__dirname, 'pricing.html'),
         portfolio: resolve(__dirname, 'portfolio.html'),
         growthNestCaseStudy: resolve(__dirname, 'case-study-growth-nest.html'),
+        siteLensProject: resolve(__dirname, 'project-nexora-sitelens.html'),
         blog: resolve(__dirname, 'blog.html'),
         contact: resolve(__dirname, 'contact.html'),
         privacy: resolve(__dirname, 'privacy.html'),
